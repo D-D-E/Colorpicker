@@ -1,0 +1,6 @@
+core_cm3.h:1698:26:ITM_SendChar	0	static
+main.c:29:5:_write	24	static
+main.c:58:6:SystemClock_Config	8	static
+main.c:43:5:main	8	static
+main.c:88:6:HAL_TIM_PeriodElapsedCallback	0	static
+main.c:95:6:Error_Handler	0	static

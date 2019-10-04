@@ -1,0 +1,2 @@
+esp_task.c:23:13:pxESP	8	static
+esp_task.c:43:6:ESPTaskInit	16	static

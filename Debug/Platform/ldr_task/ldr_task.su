@@ -1,0 +1,2 @@
+ldr_task.c:6:13:pxLDR	8	static
+ldr_task.c:17:6:LDRTaskInit	16	static

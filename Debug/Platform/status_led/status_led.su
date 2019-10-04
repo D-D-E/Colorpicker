@@ -1,0 +1,4 @@
+status_led.c:4:6:StatusLedInit	40	static
+status_led.c:19:6:StatusLedON	0	static
+status_led.c:24:6:StatusLedOFF	0	static
+status_led.c:29:6:ErrorBlink	8	static

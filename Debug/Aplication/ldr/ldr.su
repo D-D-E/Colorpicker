@@ -1,0 +1,2 @@
+ldr.c:5:6:LDRInit	0	static
+ldr.c:10:10:LDR_Get	24	static

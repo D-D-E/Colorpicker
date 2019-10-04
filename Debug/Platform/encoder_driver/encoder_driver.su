@@ -1,0 +1,11 @@
+core_cm3.h:1571:26:NVIC_EncodePriority.constprop	0	static
+encoder_driver.c:5:6:GPIO_Init	48	static
+encoder_driver.c:41:6:EXTI1_IRQHandler	0	static
+encoder_driver.c:57:6:GetButton	0	static
+encoder_driver.c:62:6:ClearButton	0	static
+encoder_driver.c:67:6:GetRotateStatus	0	static
+encoder_driver.c:72:6:ClearRotateStatus	0	static
+encoder_driver.c:77:6:GetRotatePinB	0	static
+encoder_driver.c:82:6:GetRotatePinA	0	static
+encoder_driver.c:87:9:GPIO_Read_Pin	0	static
+encoder_driver.c:48:6:EXTI15_10_IRQHandler	8	static

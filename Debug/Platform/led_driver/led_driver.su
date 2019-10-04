@@ -1,0 +1,4 @@
+led_driver.c:3:6:MX_TIM4_Init	104	static
+led_driver.c:64:13:TIM4_SET_CH1	0	static
+led_driver.c:69:13:TIM4_SET_CH2	0	static
+led_driver.c:74:13:TIM4_SET_CH3	0	static

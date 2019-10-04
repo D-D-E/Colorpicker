@@ -1,0 +1,5 @@
+stm32f1xx_ll_adc.h:2853:22:LL_ADC_SetChannelSamplingTime.constprop	8	static
+ldr_driver.c:5:6:MX_ADC1_Init	80	static
+ldr_driver.c:51:6:ADC1_Activate	8	static
+ldr_driver.c:64:6:ADC1_2_IRQHandler	0	static
+ldr_driver.c:74:10:ADC1_Get	0	static

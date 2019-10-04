@@ -1,0 +1,3 @@
+request.c:16:6:PICKER	56	static
+request.c:33:6:PickerSetLed	32	static
+request.c:52:6:PICKER_picker	8	static
