@@ -1,11 +1,11 @@
 #include "ESP8266.h"
-#include "uart.h"
-#include "delay.h"
 #include "ring_buffer.h"
 #include "stdio.h"
 #include "string.h"
 #include "stdlib.h"
 #include "stdbool.h"
+#include "delay.h"
+#include "uart.h"
 
 const char statusNOTFOUND[] = {"HTTP/1.1 404 Not Found\r\n"};
 
@@ -76,16 +76,19 @@ uint8_t ESP_SetModeSoftAP()
 
 uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
 {
-	requestFlush();
-	sprintf(request, "AT+CWSAP=\"%s\",\"%s\",5,3\r\n", ssid, password);
-	charCallBack("");
-	USART_SendData(request, strlen(request));
-
-	if(waitCallBack(20))
+	if(ssid != NULL && password != NULL)
 	{
-		USART_SendData("AT+RST\r\n", 8);
-		delay(1000);
-		return 1;
+		requestFlush();
+		sprintf(request, "AT+CWSAP=\"%s\",\"%s\",5,3\r\n", ssid, password);
+		charCallBack("");
+		USART_SendData(request, strlen(request));
+
+		if(waitCallBack(20))
+		{
+			USART_SendData("AT+RST\r\n", 8);
+			delay(1000);
+			return 1;
+		}
 	}
 
 	return 0;
@@ -93,19 +96,22 @@ uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
 
 uint8_t ESP_StartTCPServer(uint16_t port)
 {
-	USART_SendData("AT+CIPMUX=1\r\n", 13);
-	delay(100);
+    if(!TCPServerFlag)
+    {
+        USART_SendData("AT+CIPMUX=1\r\n", 13);
+        delay(100);
 
-	requestFlush();
-	sprintf(request, "AT+CIPSERVER=1,%d\r\n", port);
-	charCallBack("");
-	USART_SendData(request, strlen(request));
+        requestFlush();
+        sprintf(request, "AT+CIPSERVER=1,%d\r\n", port);
+        charCallBack("");
+        USART_SendData(request, strlen(request));
 
-	if(waitCallBack(20))
-	{
-		return 1;
-	}
-
+        if(waitCallBack(20))
+        {
+            TCPServerFlag = 1;
+            return 1;
+        }
+    }
 	return 0;
 }
 
@@ -122,8 +128,7 @@ uint8_t ESP_StopTCPServer(uint16_t port)
 			return 1;
 		}
 	}
-
-	return 1;
+	return 0;
 }
 
 uint8_t requestRefresh()
@@ -147,15 +152,6 @@ uint8_t requestRefresh()
 		return ID;
 	}
 	return 100;
-}
-
-uint8_t requestFind(char * key)
-{
-	if(strstr(answer, key) != NULL)
-	{
-		return 1;
-	}
-	return 0;
 }
 
 uint8_t requestConstFind(const char * key)

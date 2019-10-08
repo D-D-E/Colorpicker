@@ -1,4 +1,4 @@
-#include "encoder_driver.h"
+#include "../../../Test/mock_obj/encoder_driver/encoder_driver.h"
 
 static bool button_status = false, rotate_status = false, rotate_pin_A, rotate_pin_B;
 

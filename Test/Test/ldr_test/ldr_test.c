@@ -3,6 +3,7 @@
 #include <setjmp.h>
 #include "cmocka.h"
 #include "ldr.h"
+#include "ldr_driver.h"
 
 static void test_ldr_init(void **state)
 {
@@ -11,6 +12,7 @@ static void test_ldr_init(void **state)
 
 static void test_ldr_get(void **state)
 {
+    SetADC1(100);
     assert_in_range(LDR_Get(), 0, 65535);
 }
 

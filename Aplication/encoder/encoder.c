@@ -1,7 +1,7 @@
 #include "encoder.h"
-#include "encoder_driver.h"
 #include "stdbool.h"
 #include "stdint.h"
+#include "encoder_driver.h"
 
 void EncoderInit(void)
 {

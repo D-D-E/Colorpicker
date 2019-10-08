@@ -56,7 +56,7 @@ void USART1_IRQHandler(void)
 void USART1_Reset(void)
 {
 	LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_8);
-	LL_mDelay(100);
+	LL_mDelay(10);
 	LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8);
 }
 

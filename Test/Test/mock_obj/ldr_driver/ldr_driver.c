@@ -21,3 +21,8 @@ uint16_t ADC1_Get()
 {
     return ADC1_value;
 }
+
+void SetADC1(uint16_t value)
+{
+    ADC1_value = value;
+}

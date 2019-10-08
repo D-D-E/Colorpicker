@@ -12,4 +12,8 @@ void USART1_IRQHandler(void);
 void MX_USART1_UART_Init(void);
 void USART1_Reset(void);
 
+
+char * GetSendData(void);
+void SetReceiveData(char * data);
+
 #endif /* USART_UART_H_ */
