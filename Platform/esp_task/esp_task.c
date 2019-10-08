@@ -10,7 +10,7 @@ static uint8_t espStart(int fails)
 	while((ESP_SetModeSoftAP()==0) || (ESP_SetParamsSoftAP("ESP", "12345678")==0) || (ESP_StartTCPServer(80)==0))
 	{
 		gMissConnection++;
-		LL_mDelay(200);
+		////LL_mDelay(200);
 		ESP_Resset();
 		if(gMissConnection >= fails)
 		{
@@ -33,7 +33,6 @@ static void pxESP(void * arg)
 
 	while(1)
 	{
-		ITM_SendChar('1');
 		ESP_Request(PAGES, FUNCTIONS, 2);
 		osDelay(10);
 	}

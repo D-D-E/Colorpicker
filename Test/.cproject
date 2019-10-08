@@ -12,33 +12,123 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585" name="Debug" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585" name="Debug" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.enablement=null,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.image=null,org.eclipse.cdt.docker.launcher.containerbuild.property.connection=null" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585." name="/" resourcePath="">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.508908263" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
-							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.1365936207" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
-							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1404315117" managedBuildOn="true" name="CDT Internal Builder.Debug" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.83341446" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1239173915" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1125176769" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1296656605" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1058771531" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1573326594" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.609705412" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1164113373" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1313148588" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.1877000280" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug">
-								<option id="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level.2087089800" superClass="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
-								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.865573442" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" valueType="enumerated"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.23492462" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.596346315" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.152826788" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.2079603199" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.379565040" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug">
-								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.mingw.exe.debug.option.optimization.level.294888072" superClass="gnu.c.compiler.mingw.exe.debug.option.optimization.level" valueType="enumerated"/>
-								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.mingw.exe.debug.option.debugging.level.148606359" superClass="gnu.c.compiler.mingw.exe.debug.option.debugging.level" valueType="enumerated"/>
-								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1361094735" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.2085895918" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1959358768" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1350927240" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.686047753" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.codecov.1021619543" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1570122708" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.176593257" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug">
-								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1040746645" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.175593381" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.1960059066" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.823888252" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.2128453721" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.770211741" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.107633510" name="/" resourcePath="cmocka">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1282555879" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.868493256" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1112254994" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1477836861" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1014562868" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.76998144" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.543113798" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.1297369799" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1071224387" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1261267849" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.738009173" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1689795922" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1778578067" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.629825541" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.1265460910" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1627184984" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Aplication_test|cmocka|Test|Aplication" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -54,22 +144,23 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.release.464342509" name="Release" parent="cdt.managedbuild.config.gnu.mingw.exe.release">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.release.464342509" name="Release" optionalBuildProperties="" parent="cdt.managedbuild.config.gnu.mingw.exe.release">
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.release.464342509." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.release.1444011305" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.release">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.release.372994568" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.release"/>
-							<builder buildPath="${workspace_loc:/Test}/Release" id="cdt.managedbuild.tool.gnu.builder.mingw.base.204302024" managedBuildOn="true" name="CDT Internal Builder.Release" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/Release" id="cdt.managedbuild.tool.gnu.builder.mingw.base.204302024" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release.1109962386" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1151961345" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.159182889" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.1778303800" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release">
-								<option id="gnu.cpp.compiler.mingw.exe.release.option.optimization.level.922836444" superClass="gnu.cpp.compiler.mingw.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
-								<option defaultValue="gnu.cpp.compiler.debugging.level.none" id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.1125512471" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.mingw.exe.release.option.optimization.level.922836444" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.none" id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.1125512471" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.552979948" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.836502963" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release">
-								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.mingw.exe.release.option.optimization.level.1698358139" superClass="gnu.c.compiler.mingw.exe.release.option.optimization.level" valueType="enumerated"/>
-								<option defaultValue="gnu.c.debugging.level.none" id="gnu.c.compiler.mingw.exe.release.option.debugging.level.619272240" superClass="gnu.c.compiler.mingw.exe.release.option.debugging.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.mingw.exe.release.option.optimization.level.1698358139" name="Optimization Level" superClass="gnu.c.compiler.mingw.exe.release.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.none" id="gnu.c.compiler.mingw.exe.release.option.debugging.level.619272240" name="Debug Level" superClass="gnu.c.compiler.mingw.exe.release.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.144631529" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release.956113706" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release">
@@ -78,24 +169,614 @@
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release.164086771" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release.164086771" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release">
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.327961069" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
 						</toolChain>
 					</folderInfo>
 				</configuration>
 			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135" moduleId="org.eclipse.cdt.core.settings" name="led_test">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.PE64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135" name="led_test" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.enablement=null,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.image=null,org.eclipse.cdt.docker.launcher.containerbuild.property.connection=null" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1710818107" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.2021005205" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1634294820" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.960848142" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1021924035" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2118549867" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.201976416" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1928098747" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.1918233704" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.494664194" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.181058011" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.405898604" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.540406996" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.612197223" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.codecov.36266471" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.62217215" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1122456928" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.1379466621" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.245063108" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.825020845" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135.cmocka" name="/" resourcePath="cmocka">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.98523030" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1355746678" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1248382205" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.298174495" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1975644960" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.621789396" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.2143657900" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.184665810" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.1693197965" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1482678586" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.849561181" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.73044422" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1834002650" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1235861549" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1723877836" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.2116433764" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1159330835" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Aplication_test|cmocka|Test|Aplication|Test/ldr_test/ldr_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
+						<entry excluding="ldr_test/ldr_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853" moduleId="org.eclipse.cdt.core.settings" name="ldr_test">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.PE64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853" name="ldr_test" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.enablement=null,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.image=null,org.eclipse.cdt.docker.launcher.containerbuild.property.connection=null" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1006957364" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1429227306" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.897542538" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1384660358" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.924508295" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1813790434" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1502636354" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.356845089" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.235852766" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.233660272" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.307567523" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1159454564" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1651875864" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.218573192" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.codecov.1506101240" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2105067921" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1951562403" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.800657906" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.689036719" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.699548776" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853.cmocka" name="/" resourcePath="cmocka">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1086549578" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.770913407" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1748779993" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.650476228" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1461928314" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.2024668979" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.807959213" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.1553862030" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.798491506" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.345371612" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.395470037" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.807757740" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.534533282" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.693656140" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.603686597" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.576492321" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1139875737" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Aplication_test|cmocka|Test|Aplication|Test/led_test/led_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
+						<entry excluding="led_test/led_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771" moduleId="org.eclipse.cdt.core.settings" name="ring_buffer_test">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.PE64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771" name="ring_buffer_test" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.enablement=null,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.image=null,org.eclipse.cdt.docker.launcher.containerbuild.property.connection=null" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.506297093" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.895822519" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1573656138" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1950325557" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1257342412" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.774722618" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.604472752" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1162601663" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.8294951" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.1900266673" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.15060033" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.583660924" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1875968737" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1000139428" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.codecov.2091779196" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2082470336" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1674724520" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.718008820" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1358215944" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.719080155" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.cmocka" name="/" resourcePath="cmocka">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.259292933" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1550084448" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1343856616" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1039331286" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2064656066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.835867997" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.522973864" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.26891486" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.588516807" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1130609255" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1202362506" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1348053634" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.2130977436" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1608527472" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.288340817" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.1693408581" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1375688066" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Aplication_test|cmocka|Test|Aplication|Test/led_test/led_test.c|Test/ldr_test/ldr_test.c|Test/ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
+						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846" moduleId="org.eclipse.cdt.core.settings" name="encoder_test">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.PE64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846" name="encoder_test" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.enablement=null,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.image=null,org.eclipse.cdt.docker.launcher.containerbuild.property.connection=null" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.692273658" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.595757739" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.955406729" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1785680588" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1462942276" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1558981882" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.685920227" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1047663398" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.962858016" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.2118213612" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1191265179" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1958847753" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1578074651" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.2095309012" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.codecov.1781089519" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2080747890" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1355764226" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.456060191" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.905001460" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1896374301" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846.cmocka" name="/" resourcePath="cmocka">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.185502361" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.112346438" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.593681212" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.564169818" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1114829355" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.452601902" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1207587562" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option id="gnu.cpp.compiler.option.optimization.level.1569972105" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.cpp.compiler.debugging.level.max" id="gnu.cpp.compiler.option.debugging.level.1970294990" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" valueType="enumerated"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.726821871" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1861274668" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.724545479" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.2083539063" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.783017260" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.438080327" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
+								<option id="gnu.c.link.option.debugging.codecov.1898762762" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.link.option.debugging.codecov" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.384757356" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Aplication_test|cmocka|Test|Aplication|Test/led_test/led_test.c|Test/ldr_test/ldr_test.c|Test/ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
+						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="Test.cdt.managedbuild.target.gnu.mingw.exe.378864218" name="Executable" projectType="cdt.managedbuild.target.gnu.mingw.exe"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="ldr_test">
+			<resource resourceType="PROJECT" workspacePath="/Test"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/Test"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/Test"/>
+		</configuration>
+		<configuration configurationName="led_test">
+			<resource resourceType="PROJECT" workspacePath="/Test"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1392956488;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.730309450">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1925707196;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1925707196.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.1196445606;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1094255040">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.2085895918;cdt.managedbuild.tool.gnu.c.compiler.input.1570122708">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.379565040;cdt.managedbuild.tool.gnu.c.compiler.input.1361094735">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.464342509;cdt.managedbuild.config.gnu.mingw.exe.release.464342509.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.836502963;cdt.managedbuild.tool.gnu.c.compiler.input.144631529">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.181058011;cdt.managedbuild.tool.gnu.c.compiler.input.62217215">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.base.277416270;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1733641698">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.15060033;cdt.managedbuild.tool.gnu.c.compiler.input.2082470336">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.1917887853.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.307567523;cdt.managedbuild.tool.gnu.c.compiler.input.2105067921">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846;cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1191265179;cdt.managedbuild.tool.gnu.c.compiler.input.2080747890">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 </cproject>

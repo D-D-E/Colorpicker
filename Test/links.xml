@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="Assembly Source File">
+<includepath workspace_path="true">/Test/cmocka</includepath>
+<includepath workspace_path="true">/Test/Test</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/encoder_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/ldr_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/led_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/usart</includepath>
+
+</language>
+<language name="C Source File">
+<includepath workspace_path="true">/Test/Test</includepath>
+<includepath workspace_path="true">/Test/cmocka</includepath>
+<includepath workspace_path="true">/Test/Test/ldr_test</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/ldr_driver</includepath>
+<includepath workspace_path="true">/Test/Aplication/ldr</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/encoder_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/encoder_queue</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/encoder_task</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/esp_task</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/ldr_queue</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/ldr_task</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/led_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/led_task</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/status_led</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/usart</includepath>
+<includepath workspace_path="true">/Test/Aplication/ESP8266</includepath>
+<includepath workspace_path="true">/Test/Aplication/encoder</includepath>
+<includepath workspace_path="true">/Test/Aplication/led</includepath>
+<includepath workspace_path="true">/Test/Aplication/request</includepath>
+<includepath workspace_path="true">/Test/Aplication/ring_buffer</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>

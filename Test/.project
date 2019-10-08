@@ -23,4 +23,16 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Aplication</name>
+			<type>2</type>
+			<location>C:/Users/dashk/OneDrive/Documents/CubeMx/blink/rtos_usart_ll/Aplication</location>
+		</link>
+		<link>
+			<name>cmocka</name>
+			<type>2</type>
+			<location>C:/Users/dashk/OneDrive/Documents/CubeMx/blink/rtos_usart_ll/Test/cmocka</location>
+		</link>
+	</linkedResources>
 </projectDescription>

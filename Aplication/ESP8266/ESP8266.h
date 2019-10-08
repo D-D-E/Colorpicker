@@ -1,6 +1,5 @@
 #ifndef ESP8266_ESP8266_H_
 #define ESP8266_ESP8266_H_
-#include "main.h"
 #include "stdint.h"
 
 typedef void (*foo)();

@@ -23,7 +23,7 @@ char RingBuff_Pop()
 
 uint8_t RingBuff_IsEmpty()
 {
-	if (index_in != index_out)
+	if (index_in == index_out)
 		return 1;
 	return 0;
 }
