@@ -17,6 +17,7 @@ uint8_t TCPServerFlag = 0;
 void ESPInit()
 {
 	 MX_USART1_UART_Init();
+	 RingBuff_Init();
 }
 
 void ESP_Resset()
@@ -47,7 +48,6 @@ static bool waitCallBack(uint8_t ms)
 	return 0;
 }
 
-//TODO comment code
 uint8_t ESP_SetMode(int mode)
 {
 	requestFlush();
@@ -265,9 +265,9 @@ void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
 	{
 		for(int i = 0; i < number; i++)
 		{
-			if(requestConstFind(pages[i])
-			   && pages != NULL
-			   && functions != NULL)
+			if(pages != NULL
+		       && functions != NULL
+		       && requestConstFind(pages[i]))
 			{
 				functions[i]();
 				return;
