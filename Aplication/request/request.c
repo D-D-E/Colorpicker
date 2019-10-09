@@ -3,6 +3,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include "ESP8266.h"
 
 const char *PAGES[] = {"GET /PICKER ", "GET /PICKER?picker="};
 const foo FUNCTIONS[] = {PICKER, PICKER_picker};
@@ -12,6 +13,8 @@ const char htmlpicker2[] = {"\" id=\"cp\" onclick=\"setFlag()\" name=\"picker\" 
 
 const char statusOK[] = {"HTTP/1.1 200 OK\r\nConnection: Keep-Alive\r\nContent-Type: text/html"};
 const char statusOK_CL0[] = {"HTTP/1.1 200 OK\r\nConnection: Keep-Alive\r\nContent-Type: text/html\r\nContent-Length: 0"};
+
+const char statusNOTFOUND[] = {"HTTP/1.1 404 Not Found\r\n"};
 
 void PICKER()
 {
@@ -33,16 +36,16 @@ void PICKER()
 void PickerSetLed()
 {
 	char * search;
-	search = strstr(ESP_GetRequest(), "?picker=%");
+	search = strstr(ESP_GetAnswer(), "?picker=%");
 	if(search != NULL)
 	{
 		char hex[2];
 		uint16_t colors[3] = {0, 0, 0};
 		for(int i = 0, l = 0; i < 6; i += 2, l++)
 		{
-			int position = search - ESP_GetRequest() + 11 + i;
-			hex[0] = ESP_GetRequest()[position];
-			hex[1] = ESP_GetRequest()[position + 1];
+			int position = search - ESP_GetAnswer() + 11 + i;
+			hex[0] = ESP_GetAnswer()[position];
+			hex[1] = ESP_GetAnswer()[position + 1];
 			colors[l] = strtol(hex, NULL, 16);
 		}
 		Led_Set(colors[0]*65535/255, colors[1]*65535/255, colors[2]*65535/255);
@@ -54,4 +57,35 @@ void PICKER_picker()
 	PickerSetLed();
 
 	PICKER();
+}
+
+uint8_t requestConstFind(const char * key)
+{
+	if(strstr(ESP_GetAnswer(), key) != NULL)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+
+void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
+{
+	uint8_t linkID = requestRefresh();
+	SetLinkID(linkID);
+
+	if(linkID >= 0 && linkID < 5)
+	{
+		for(int i = 0; i < number; i++)
+		{
+			if(pages != NULL
+		       && functions != NULL
+		       && requestConstFind(pages[i]))
+			{
+				functions[i]();
+				return;
+			}
+		}
+		ESP_SendConstData(statusNOTFOUND, strlen(statusNOTFOUND), 1);
+	}
 }

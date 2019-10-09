@@ -7,8 +7,6 @@
 #include "delay.h"
 #include "uart.h"
 
-const char statusNOTFOUND[] = {"HTTP/1.1 404 Not Found\r\n"};
-
 char request[512];
 char answer[512];
 uint8_t linkID;
@@ -157,20 +155,6 @@ uint8_t requestRefresh()
 	return 100;
 }
 
-uint8_t requestConstFind(const char * key)
-{
-	if(strstr(answer, key) != NULL)
-	{
-		return 1;
-	}
-	return 0;
-}
-
-char * ESP_GetRequest()
-{
-	return answer;
-}
-
 uint8_t charCallBack(char * key)
 {
 	answerFlush();
@@ -258,21 +242,37 @@ uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 	return 1;
 }
 
-void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
+void SetLinkID(uint8_t ID)
 {
-	linkID = requestRefresh();
-	if(linkID >= 0 && linkID < 5)
-	{
-		for(int i = 0; i < number; i++)
-		{
-			if(pages != NULL
-		       && functions != NULL
-		       && requestConstFind(pages[i]))
-			{
-				functions[i]();
-				return;
-			}
-		}
-		ESP_SendConstData(statusNOTFOUND, strlen(statusNOTFOUND), 1);
-	}
+	linkID = ID;
 }
+
+uint8_t GetLinkID(void)
+{
+	return linkID;
+}
+
+char * ESP_GetAnswer(void)
+{
+	return answer;
+}
+
+
+//void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
+//{
+//	linkID = requestRefresh();
+//	if(linkID >= 0 && linkID < 5)
+//	{
+//		for(int i = 0; i < number; i++)
+//		{
+//			if(pages != NULL
+//		       && functions != NULL
+//		       && requestConstFind(pages[i]))
+//			{
+//				functions[i]();
+//				return;
+//			}
+//		}
+//		ESP_SendConstData(statusNOTFOUND, strlen(statusNOTFOUND), 1);
+//	}
+//}
