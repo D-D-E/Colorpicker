@@ -103,8 +103,6 @@ void MX_USART1_UART_Init(void)
   LL_USART_EnableIT_RXNE(USART1);
   LL_USART_EnableIT_ERROR(USART1);
 
-  void RingBuff_Init();
-
   //Reset gpio
   GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;

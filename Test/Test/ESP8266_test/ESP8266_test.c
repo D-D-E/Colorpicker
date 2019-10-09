@@ -8,7 +8,6 @@
 #include "request.h"
 #include "uart.h"
 
-
 static void test_esp_init(void **state)
 {
     ESPInit();
@@ -83,42 +82,6 @@ static void test_esp_stop(void **state)
     assert_int_equal(ESP_StopTCPServer(80), 1);
 }
 
-static void test_esp_request_not_found(void **state)
-{
-    SetReceiveData(">");
-    ESP_Request(NULL, NULL, 0);
-}
-
-static void test_esp_request_not_found_page(void **state)
-{
-    SetReceiveData("+IPD,1,112  GET /NOT_EXIST  >");
-    ESP_Request(PAGES, FUNCTIONS, 2);
-}
-
-static void test_esp_request_id_found(void **state)
-{
-    SetReceiveData("+IPD,8,112  >");
-    ESP_Request(PAGES, FUNCTIONS, 2);
-}
-
-static void test_esp_request_page_found(void **state)
-{
-    SetReceiveData("+IPD,1,122, GET /PICKER     >");
-    ESP_Request(PAGES, FUNCTIONS, 2);
-}
-
-static void test_esp_request_page_set(void **state)
-{
-    SetReceiveData("+IPD,1,122, GET /PICKER?picker=%23ffffff    >");
-    ESP_Request(PAGES, FUNCTIONS, 2);
-}
-
-static void test_esp_request_page_null(void **state)
-{
-    SetReceiveData("+IPD,1,122, GET /PICKER   >");
-    ESP_Request(NULL, NULL, 2);
-}
-
 static void test_esp_send_data(void **state)
 {
     SetReceiveData(">");
@@ -140,12 +103,6 @@ int main(void)
            ,cmocka_unit_test(test_esp_mode_station)
            ,cmocka_unit_test(test_esp_start)
            ,cmocka_unit_test(test_esp_stop)
-           ,cmocka_unit_test(test_esp_request_not_found)
-           ,cmocka_unit_test(test_esp_request_not_found_page)
-           ,cmocka_unit_test(test_esp_request_id_found)
-           ,cmocka_unit_test(test_esp_request_page_found)
-           ,cmocka_unit_test(test_esp_request_page_set)
-           ,cmocka_unit_test(test_esp_request_page_null)
            ,cmocka_unit_test(test_esp_send_data)
     };
 

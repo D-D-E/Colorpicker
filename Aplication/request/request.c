@@ -88,4 +88,5 @@ void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
 		}
 		ESP_SendConstData(statusNOTFOUND, strlen(statusNOTFOUND), 1);
 	}
+	else return;
 }

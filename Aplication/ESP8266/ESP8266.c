@@ -79,7 +79,7 @@ uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
 	{
 		requestFlush();
 		sprintf(request, "AT+CWSAP=\"%s\",\"%s\",5,3\r\n", ssid, password);
-		charCallBack("");   //clear ring buffer after restart
+		//charCallBack("");   //clear ring buffer after restart
 		USART_SendData(request, strlen(request));
 
 		if(waitCallBack(20))
@@ -102,7 +102,7 @@ uint8_t ESP_StartTCPServer(uint16_t port)
 
         requestFlush();
         sprintf(request, "AT+CIPSERVER=1,%d\r\n", port);
-        charCallBack("");   //clear ring buffer after restart
+        //charCallBack("");   //clear ring buffer after restart
         USART_SendData(request, strlen(request));
 
         if(waitCallBack(20))
