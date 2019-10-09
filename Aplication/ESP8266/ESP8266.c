@@ -47,6 +47,7 @@ static bool waitCallBack(uint8_t ms)
 	return 0;
 }
 
+//TODO comment code
 uint8_t ESP_SetMode(int mode)
 {
 	requestFlush();
@@ -55,7 +56,7 @@ uint8_t ESP_SetMode(int mode)
 
 	if(waitCallBack(20))
 	{
-		USART_SendData("AT+RST\r\n", 8);
+		USART_SendData("AT+RST\r\n", 8); //restart to apply settings
 		delay(1000);
 
 		return 1;
@@ -80,12 +81,12 @@ uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
 	{
 		requestFlush();
 		sprintf(request, "AT+CWSAP=\"%s\",\"%s\",5,3\r\n", ssid, password);
-		charCallBack("");
+		charCallBack("");   //clear ring buffer after restart
 		USART_SendData(request, strlen(request));
 
 		if(waitCallBack(20))
 		{
-			USART_SendData("AT+RST\r\n", 8);
+			USART_SendData("AT+RST\r\n", 8); //restart to apply settings
 			delay(1000);
 			return 1;
 		}
@@ -103,7 +104,7 @@ uint8_t ESP_StartTCPServer(uint16_t port)
 
         requestFlush();
         sprintf(request, "AT+CIPSERVER=1,%d\r\n", port);
-        charCallBack("");
+        charCallBack("");   //clear ring buffer after restart
         USART_SendData(request, strlen(request));
 
         if(waitCallBack(20))
@@ -112,6 +113,7 @@ uint8_t ESP_StartTCPServer(uint16_t port)
             return 1;
         }
     }
+
 	return 0;
 }
 
@@ -125,6 +127,7 @@ uint8_t ESP_StopTCPServer(uint16_t port)
 
 		if(waitCallBack(20))
 		{
+		    TCPServerFlag = 0;
 			return 1;
 		}
 	}
@@ -177,7 +180,7 @@ uint8_t charCallBack(char * key)
 		answer[i++] = RingBuff_Pop();
 	}
 
-	if(strlen(answer) >= strlen(key))
+	if(key != NULL && strlen(answer) >= strlen(key))
 	{
 		if(strstr(answer, key) != NULL)
 		{
@@ -204,7 +207,7 @@ uint8_t ESP_SendData(char *data, uint16_t dataLength, uint8_t flagRN)
 		dataLength -= 2;
 	}
 
-	if(charCallBack(">"))
+	if(charCallBack(">") && data != NULL)
 	{
 		for(int i = 0; i < dataLength; i++)
 		{
@@ -238,7 +241,7 @@ uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 		dataLength -= 2;
 	}
 
-	if(charCallBack(">"))
+	if(charCallBack(">") && data != NULL)
 	{
 		for(int i = 0; i < dataLength; i++)
 		{
@@ -262,7 +265,9 @@ void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
 	{
 		for(int i = 0; i < number; i++)
 		{
-			if(requestConstFind(pages[i]))
+			if(requestConstFind(pages[i])
+			   && pages != NULL
+			   && functions != NULL)
 			{
 				functions[i]();
 				return;

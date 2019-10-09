@@ -25,11 +25,55 @@ static void test_esp_mode_station(void **state)
     assert_int_equal(ESP_SetModeStation(), 1);
 }
 
+static void test_esp_corrupted_start_ap(void **state)
+{
+    SetReceiveData("OK");
+    ESP_StopTCPServer(80);
+
+    SetReceiveData("ERROR");
+    assert_int_equal(ESP_SetModeSoftAP(), 0);
+    SetReceiveData("OK");
+    assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 1);
+    SetReceiveData("OK");
+    assert_int_equal(ESP_StartTCPServer(80), 1);
+}
+
+static void test_esp_corrupted_set_params_ap(void **state)
+{
+    SetReceiveData("OK");
+    ESP_StopTCPServer(80);
+
+    SetReceiveData("OK");
+    assert_int_equal(ESP_SetModeSoftAP(), 1);
+    SetReceiveData("ERROR");
+    assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 0);
+    SetReceiveData("OK");
+    assert_int_equal(ESP_StartTCPServer(80), 1);
+}
+
+static void test_esp_corrupted_start_server(void **state)
+{
+    SetReceiveData("OK");
+    ESP_StopTCPServer(80);
+
+    SetReceiveData("OK");
+    assert_int_equal(ESP_SetModeSoftAP(), 1);
+    SetReceiveData("OK");
+    assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 1);
+    SetReceiveData("ERROR");
+    assert_int_equal(ESP_StartTCPServer(80), 0);
+}
+
 static void test_esp_start(void **state)
 {
     SetReceiveData("OK");
+    ESP_StopTCPServer(80);
+
+    SetReceiveData("OK");
     assert_int_equal(ESP_SetModeSoftAP(), 1);
+    SetReceiveData("OK");
     assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 1);
+    SetReceiveData("OK");
     assert_int_equal(ESP_StartTCPServer(80), 1);
 }
 
@@ -81,7 +125,10 @@ int main(void)
     const struct CMUnitTest tests[] =
     {
             cmocka_unit_test(test_esp_init)
-            ,cmocka_unit_test(test_esp_reset)
+           ,cmocka_unit_test(test_esp_reset)
+           ,cmocka_unit_test(test_esp_corrupted_start_ap)
+           ,cmocka_unit_test(test_esp_corrupted_set_params_ap)
+           ,cmocka_unit_test(test_esp_corrupted_start_server)
            ,cmocka_unit_test(test_esp_mode_station)
            ,cmocka_unit_test(test_esp_start)
            ,cmocka_unit_test(test_esp_stop)

@@ -33,6 +33,7 @@ char * GetSendData(void)
 
 void SetReceiveData(char * data)
 {
+    RingBuff_Clear();
     for(int i = 0; i < strlen(data); i++)
     {
         RingBuff_Push(data[i]);
