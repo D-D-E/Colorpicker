@@ -20,7 +20,7 @@ void ESPInit()
 
 void ESP_Resset()
 {
-	USART1_Reset();
+	USART1_Device_Reset();
 }
 
 static void requestFlush()
@@ -33,12 +33,12 @@ static void answerFlush()
 	memset(answer, '0', 512);
 }
 
-static bool waitCallBack(uint8_t ms)
+static bool waitCallBack(char * aim, uint8_t ms)
 {
 	uint32_t time = get_sys_tick();
 	while(time + ms > get_sys_tick())
 	{
-		if(charCallBack("OK"))
+		if(charCallBack(aim))
 		{
 			return 1;
 		}
@@ -50,9 +50,10 @@ uint8_t ESP_SetMode(int mode)
 {
 	requestFlush();
 	sprintf(request, "AT+CWMODE=%d\r\n", mode);
+	//RingBuff_Clear();
 	USART_SendData(request, strlen(request));
 
-	if(waitCallBack(20))
+	if(waitCallBack("OK", 20))
 	{
 		USART_SendData("AT+RST\r\n", 8); //restart to apply settings
 		delay(1000);
@@ -79,10 +80,11 @@ uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
 	{
 		requestFlush();
 		sprintf(request, "AT+CWSAP=\"%s\",\"%s\",5,3\r\n", ssid, password);
+		//RingBuff_Clear();
 		//charCallBack("");   //clear ring buffer after restart
 		USART_SendData(request, strlen(request));
 
-		if(waitCallBack(20))
+		if(waitCallBack("OK", 20))
 		{
 			USART_SendData("AT+RST\r\n", 8); //restart to apply settings
 			delay(1000);
@@ -102,10 +104,11 @@ uint8_t ESP_StartTCPServer(uint16_t port)
 
         requestFlush();
         sprintf(request, "AT+CIPSERVER=1,%d\r\n", port);
+    	//RingBuff_Clear();
         //charCallBack("");   //clear ring buffer after restart
         USART_SendData(request, strlen(request));
 
-        if(waitCallBack(20))
+        if(waitCallBack("OK", 20))
         {
             TCPServerFlag = 1;
             return 1;
@@ -121,9 +124,10 @@ uint8_t ESP_StopTCPServer(uint16_t port)
 	{
 		requestFlush();
 		sprintf(request, "AT+CIPSERVER=0,%d\r\n", port);
+		//RingBuff_Clear();
 		USART_SendData(request, strlen(request));
 
-		if(waitCallBack(20))
+		if(waitCallBack("OK", 20))
 		{
 		    TCPServerFlag = 0;
 			return 1;
@@ -177,21 +181,11 @@ uint8_t charCallBack(char * key)
 
 uint8_t ESP_SendData(char *data, uint16_t dataLength, uint8_t flagRN)
 {
-	if(flagRN)
-	{
-		dataLength += 2;
-	}
 	requestFlush();
-	sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, dataLength);
+	sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, flagRN ? (dataLength + 2) : dataLength);
 	USART_SendData(request, strlen(request));
-	delay(200);
 
-	if(flagRN)
-	{
-		dataLength -= 2;
-	}
-
-	if(charCallBack(">") && data != NULL)
+	if(waitCallBack(">", 20) && data != NULL)
 	{
 		for(int i = 0; i < dataLength; i++)
 		{
@@ -205,27 +199,23 @@ uint8_t ESP_SendData(char *data, uint16_t dataLength, uint8_t flagRN)
 	else return 0;
 
 	delay(100);
+
+//    if(waitCallBack("SEND OK", 100))
+//    {
+//        return 1;
+//    }
 
 	return 1;
 }
 
 uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 {
-	if(flagRN)
-	{
-		dataLength += 2;
-	}
 	requestFlush();
-	sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, dataLength);
+	sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, flagRN ? (dataLength + 2) : dataLength);
 	USART_SendData(request, strlen(request));
 	delay(200);
 
-	if(flagRN)
-	{
-		dataLength -= 2;
-	}
-
-	if(charCallBack(">") && data != NULL)
+	if(waitCallBack(">", 20) && data != NULL)
 	{
 		for(int i = 0; i < dataLength; i++)
 		{
@@ -238,6 +228,11 @@ uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 	}
 	else return 0;
 	delay(100);
+
+//    if(waitCallBack("SEND OK", 100))
+//    {
+//        return 1;
+//    }
 
 	return 1;
 }

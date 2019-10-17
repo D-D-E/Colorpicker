@@ -125,7 +125,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="Aplication_test|Aplication|Test|cmocka" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>
@@ -189,6 +188,8 @@
 					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -196,16 +197,9 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.756885135." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1710818107" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.2021005205" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
-							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1634294820" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<builder buildPath="${workspace_loc:/Test}/led_test" id="cdt.managedbuild.builder.gnu.cross.2137399368" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.960848142" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1021924035" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.1021924035" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" useByScannerDiscovery="false" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2118549867" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.201976416" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -219,27 +213,23 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_mock}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.540406996" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.612197223" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.codecov.36266471" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="gnu.c.compiler.option.dialect.std.1360253039" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.62217215" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1122456928" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
@@ -256,14 +246,7 @@
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.98523030" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1355746678" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1248382205" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.298174495" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.298174495" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1975644960" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.621789396" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -277,26 +260,22 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_mock}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.73044422" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1834002650" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.dialect.std.300363606" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1235861549" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1723877836" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base">
@@ -306,9 +285,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Aplication_test|Aplication|Test|cmocka|Test/ldr_test/ldr_test.c|Test/encoder_test/encoder_test.c|Test/ESP8266_test/ESP8266_test.c|Test/ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
-						<entry excluding="ldr_test/ldr_test.c|encoder_test/encoder_test.c|ESP8266_test/ESP8266_test.c|ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry excluding="Aplication_test|Aplication|Test|cmocka|Test/ldr_test/ldr_test.c|Test/encoder_test/encoder_test.c|Test/ESP8266_test/ESP8266_test.c|Test/ring_buffer_test/ring_buffer_test.c|Test/mock_obj/esp_mock/|Test/request_test/|Test/mock_obj/led_mock/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="ldr_test/ldr_test.c|encoder_test/encoder_test.c|ESP8266_test/ESP8266_test.c|ring_buffer_test/ring_buffer_test.c|mock_obj/esp_mock/|request_test/|mock_obj/led_mock/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>
 				</configuration>
@@ -333,18 +311,19 @@
 							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.897542538" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1384660358" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.924508295" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1813790434" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -359,23 +338,17 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1651875864" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.218573192" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
@@ -397,18 +370,19 @@
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.770913407" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1748779993" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.650476228" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1461928314" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -423,23 +397,17 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.807757740" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.534533282" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
@@ -452,9 +420,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test|cmocka|Test/encoder_test/encoder_test.c|Test/ESP8266_test/ESP8266_test.c|Test/ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
-						<entry excluding="led_test/led_test.c|encoder_test/encoder_test.c|ESP8266_test/ESP8266_test.c|ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test|cmocka|Test/encoder_test/encoder_test.c|Test/ESP8266_test/ESP8266_test.c|Test/ring_buffer_test/ring_buffer_test.c|Test/mock_obj/esp_mock/|Test/request_test/|APL/led/led.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="led_test/led_test.c|encoder_test/encoder_test.c|ESP8266_test/ESP8266_test.c|ring_buffer_test/ring_buffer_test.c|mock_obj/esp_mock/|request_test/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>
 				</configuration>
@@ -478,15 +445,7 @@
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.895822519" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
 							<builder buildPath="${workspace_loc:/Test}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1573656138" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1950325557" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1257342412" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.1257342412" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.774722618" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.604472752" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -500,23 +459,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1875968737" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1000139428" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
@@ -537,15 +489,7 @@
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.259292933" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1550084448" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1343856616" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1039331286" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.1039331286" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2064656066" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.835867997" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -559,23 +503,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1348053634" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.2130977436" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
@@ -588,9 +525,8 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test/ring_buffer_test/ring_buffer_test.c|Test|cmocka|Test/ldr_test/ldr_test.c|Test/encoder_test/encoder_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
-						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|ring_buffer_test/ring_buffer_test.c|encoder_test/encoder_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test|cmocka|Test/ldr_test/ldr_test.c|Test/encoder_test/encoder_test.c|APL/led/led.c|Test/request_test/request_test.c|APL/ESP8266/ESP8266.c|Test/ESP8266_test/ESP8266_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|encoder_test/encoder_test.c|request_test/request_test.c|ESP8266_test/ESP8266_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>
 				</configuration>
@@ -636,23 +572,17 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1578074651" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.2095309012" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
@@ -695,23 +625,17 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.724545479" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.2083539063" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
@@ -725,7 +649,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test/ring_buffer_test/ring_buffer_test.c|Test|cmocka|Test/ldr_test/ldr_test.c|Test/request_test/request_test.c|Test/ESP8266_test/ESP8266_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
 						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|ring_buffer_test/ring_buffer_test.c|ESP8266_test/ESP8266_test.c|request_test/request_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>
@@ -750,17 +673,9 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846.1584967815." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1685606486" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.711681568" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
-							<builder buildPath="${workspace_loc:/Test}/esp_test" id="cdt.managedbuild.builder.gnu.cross.60688222" superClass="cdt.managedbuild.builder.gnu.cross"/>
+							<builder buildPath="${workspace_loc:/Test}/esp_test" id="cdt.managedbuild.builder.gnu.cross.60688222" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.2145008030" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1781401960" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.1781401960" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1484615881" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.209480103" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -774,23 +689,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.2025754614" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1465998998" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
@@ -811,15 +719,7 @@
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1832803463" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1546021194" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1589201813" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1043210485" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.1043210485" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1615134178" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1966586208" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -833,23 +733,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.2022587754" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1881078142" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" valueType="enumerated"/>
@@ -862,9 +755,9 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test/ring_buffer_test/ring_buffer_test.c|Test|cmocka|Test/ldr_test/ldr_test.c|Test/encoder_test/encoder_test.c|Test/request_test/request_test.c|Test/mock_obj/esp_mock/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
-						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|ring_buffer_test/ring_buffer_test.c|encoder_test/encoder_test.c|request_test/request_test.c|mock_obj/esp_mock/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
+						<entry excluding="APL|Test/led_test/led_test.c|Aplication_test|Aplication|Test|cmocka|Test/ldr_test/ldr_test.c|Test/encoder_test/encoder_test.c|Test/request_test/request_test.c|Test/mock_obj/esp_mock/|APL/led/led.c|Test/ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="led/led.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APL"/>
+						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|encoder_test/encoder_test.c|request_test/request_test.c|mock_obj/esp_mock/|ring_buffer_test/ring_buffer_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>
 				</configuration>
@@ -888,17 +781,9 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.700218585.580872771.177057846.1584967815.374223676." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.765198671" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1067400824" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
-							<builder buildPath="${workspace_loc:/Test}/request_test" id="cdt.managedbuild.builder.gnu.cross.1795955597" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+							<builder buildPath="${workspace_loc:/Test}/request_test" id="cdt.managedbuild.builder.gnu.cross.1795955597" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.836941207" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.484756538" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.484756538" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.433299763" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.275192949" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -912,23 +797,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_mock}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.29753579" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
@@ -951,15 +829,7 @@
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.143743337" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE64" id="cdt.managedbuild.target.gnu.platform.mingw.base.1032099985" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.2145763686" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1845506150" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
-								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="gnu.both.asm.option.include.paths.1845506150" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1881191571" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.599963431" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -973,23 +843,16 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/cmocka}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/ldr_test}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ldr}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/encoder_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_queue}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/ldr_task}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/led_task}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/status_led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/usart}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ESP8266}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/encoder}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/led}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/request}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Aplication/ring_buffer}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/delay}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ldr}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/request}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/encoder}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ESP8266}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/ring_buffer}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/APL/led}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Test/Test/mock_obj/esp_mock}&quot;"/>
 								</option>
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1009270686" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
@@ -1004,8 +867,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test/ring_buffer_test/ring_buffer_test.c|Test|cmocka|Test/ldr_test/ldr_test.c|Test/ESP8266_test/ESP8266_test.c|Test/encoder_test/encoder_test.c|Aplication/ESP8266/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry excluding="ESP8266/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Aplication"/>
+						<entry excluding="Test/led_test/led_test.c|Aplication_test|Aplication|Test/ring_buffer_test/ring_buffer_test.c|Test|cmocka|Test/ldr_test/ldr_test.c|Test/ESP8266_test/ESP8266_test.c|Test/encoder_test/encoder_test.c|APL/led/led.c|APL/ESP8266/ESP8266.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 						<entry excluding="ldr_test/ldr_test.c|led_test/led_test.c|ring_buffer_test/ring_buffer_test.c|encoder_test/encoder_test.c|ESP8266_test/ESP8266_test.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Test"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmocka"/>
 					</sourceEntries>

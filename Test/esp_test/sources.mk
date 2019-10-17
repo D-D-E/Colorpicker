@@ -13,17 +13,17 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Aplication/ESP8266 \
-Aplication/encoder \
-Aplication/ldr \
-Aplication/led \
-Aplication/request \
-Aplication/ring_buffer \
+APL/ESP8266 \
+APL/encoder \
+APL/ldr \
+APL/request \
+APL/ring_buffer \
 Test/ESP8266_test \
 Test/mock_obj/delay \
 Test/mock_obj/encoder_driver \
 Test/mock_obj/ldr_driver \
 Test/mock_obj/led_driver \
+Test/mock_obj/led_mock \
 Test/mock_obj/usart \
 cmocka \
 

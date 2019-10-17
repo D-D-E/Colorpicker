@@ -1,27 +1,34 @@
 #include "led.h"
 #include "led_driver.h"
 
-uint32_t led[3] = {0, 0, 0};
+uint16_t led[3] = {0, 0, 0};
 
 void LedInit(void)
 {
 	MX_TIM4_Init();
 }
 
+static uint16_t OverflowProtection(uint16_t value)
+{
+    if(value > 4095)
+        return 4095;
+    return value;
+}
+
 void Led_Set(uint16_t red, uint16_t green, uint16_t blue)
 {
-	led[0] = red;
-	led[1] = green;
-	led[2] = blue;
+	led[0] = OverflowProtection(red);
+	led[1] = OverflowProtection(green);
+	led[2] = OverflowProtection(blue);
 }
 
 void Led_Set_Color(color color, uint16_t value)
 {
 	switch(color)
 	{
-		case eRed: led[0] = value; break;
-		case eGreen: led[1] = value; break;
-		case eBlue: led[2] = value; break;
+		case eRed: led[0] = OverflowProtection(value); break;
+		case eGreen: led[1] = OverflowProtection(value); break;
+		case eBlue: led[2] = OverflowProtection(value); break;
 		default: break;
 	}
 
@@ -41,7 +48,8 @@ uint16_t Led_Get_Color(color color)
 
 static uint16_t map(uint16_t value, uint16_t max_value)
 {
-	uint16_t map_res = value * max_value / 65535;
+	uint16_t map_res = value * max_value / 4095;
+
 	return map_res;
 }
 

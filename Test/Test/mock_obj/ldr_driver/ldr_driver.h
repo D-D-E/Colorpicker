@@ -8,5 +8,6 @@ void ADC1_2_IRQHandler(void);
 uint16_t ADC1_Get();
 
 void SetADC1(uint16_t value);
+void SetADC1_random(uint16_t min, uint16_t max);
 
 #endif

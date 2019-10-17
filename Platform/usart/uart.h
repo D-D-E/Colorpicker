@@ -10,6 +10,6 @@ void USART_CharReception_Callback(void);
 void Error_Callback(void);
 void USART1_IRQHandler(void);
 void MX_USART1_UART_Init(void);
-void USART1_Reset(void);
+void USART1_Device_Reset(void);
 
 #endif /* USART_UART_H_ */

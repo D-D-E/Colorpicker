@@ -1,0 +1,27 @@
+CC=gcc
+CFLAGS= $(LIBS) -O0 -g3 -Wall -fprofile-arcs -ftest-coverage -fmessage-length=0
+LDFLAGS= $(LIBS) -fprofile-arcs -ftest-coverage
+MKDIR_P = mkdir -p
+EXECUTABLE= ./Test/$(MAKECMDGOALS)/$(MAKECMDGOALS)
+GCNO =$(USER_OBJS:.o=.gcno)
+GCDA =$(USER_OBJS:.o=.gcda)
+
+-include ./sources.mk
+-include ./objects.mk
+-include ./Test/$(MAKECMDGOALS)/target.mk
+
+
+ifeq ($(MODE), clean)
+$(MAKECMDGOALS):: 
+	rm $(USER_OBJS) $(GCDA) $(GCNO)
+else 
+$(MAKECMDGOALS):: $(SOURCES) $(EXECUTABLE)
+endif
+
+.PHONY: $(EXECUTABLE)	
+$(EXECUTABLE): $(USER_OBJS)
+	$(MKDIR_P) ./Test/$(MAKECMDGOALS)
+	$(CC)  $(LDFLAGS) $(USER_OBJS) -o $@
+	
+
+	

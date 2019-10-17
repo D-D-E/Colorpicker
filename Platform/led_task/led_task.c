@@ -4,9 +4,9 @@
 #include "ldr_queue.h"
 #include "cmsis_os.h"
 
-static uint32_t constrain(int32_t value)
+static uint16_t constrain(int32_t value)
 {
-	if(value > 65535) value = 65535;
+	if(value > 4095) value = 4095;
 	if(value < 0) value = 0;
 	return value;
 }
@@ -15,7 +15,7 @@ static void pxLed(void * arg)
 {
 	LedInit();
 
-	uint16_t ldr_value = 65535;
+	uint16_t ldr_value = 4095;
 	EncoderRotateInfo xEncoder_info;
 
 	while(1)
@@ -23,7 +23,7 @@ static void pxLed(void * arg)
 		if(EncoderQueue_IsElements())
 		{
 			xEncoder_info = EncoderQueue_Receive();
-			int32_t red = Led_Get_Color(eRed), green = Led_Get_Color(eGreen), blue = Led_Get_Color(eBlue);
+			int16_t red = Led_Get_Color(eRed), green = Led_Get_Color(eGreen), blue = Led_Get_Color(eBlue);
 
 			switch(xEncoder_info.button)
 			{

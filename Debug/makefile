@@ -8,54 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include Test/led_test/cmocka/subdir.mk
--include Test/led_test/Test/mock_obj/usart/subdir.mk
--include Test/led_test/Test/mock_obj/led_driver/subdir.mk
--include Test/led_test/Test/mock_obj/ldr_driver/subdir.mk
--include Test/led_test/Test/mock_obj/encoder_driver/subdir.mk
--include Test/led_test/Test/led_test/subdir.mk
--include Test/led_test/Test/ldr_test/subdir.mk
--include Test/led_test/Aplication/ring_buffer/subdir.mk
--include Test/led_test/Aplication/request/subdir.mk
--include Test/led_test/Aplication/led/subdir.mk
--include Test/led_test/Aplication/ldr/subdir.mk
--include Test/led_test/Aplication/encoder/subdir.mk
--include Test/led_test/Aplication/ESP8266/subdir.mk
--include Test/ldr_test/cmocka/subdir.mk
--include Test/ldr_test/Test/mock_obj/usart/subdir.mk
--include Test/ldr_test/Test/mock_obj/led_driver/subdir.mk
--include Test/ldr_test/Test/mock_obj/ldr_driver/subdir.mk
--include Test/ldr_test/Test/mock_obj/encoder_driver/subdir.mk
--include Test/ldr_test/Test/led_test/subdir.mk
--include Test/ldr_test/Test/ldr_test/subdir.mk
--include Test/ldr_test/Aplication/ring_buffer/subdir.mk
--include Test/ldr_test/Aplication/request/subdir.mk
--include Test/ldr_test/Aplication/led/subdir.mk
--include Test/ldr_test/Aplication/ldr/subdir.mk
--include Test/ldr_test/Aplication/encoder/subdir.mk
--include Test/ldr_test/Aplication/ESP8266/subdir.mk
--include Test/cmocka/subdir.mk
--include Test/Test/mock_obj/usart/subdir.mk
--include Test/Test/mock_obj/led_driver/subdir.mk
--include Test/Test/mock_obj/ldr_driver/subdir.mk
--include Test/Test/mock_obj/encoder_driver/subdir.mk
--include Test/Test/led_test/subdir.mk
--include Test/Test/ldr_test/subdir.mk
--include Test/Debug/cmocka/subdir.mk
--include Test/Debug/Test/mock_obj/usart/subdir.mk
--include Test/Debug/Test/mock_obj/led_driver/subdir.mk
--include Test/Debug/Test/mock_obj/ldr_driver/subdir.mk
--include Test/Debug/Test/mock_obj/encoder_driver/subdir.mk
--include Test/Debug/Test/led_test/subdir.mk
--include Test/Debug/Test/ldr_test/subdir.mk
--include Test/Debug/Test/subdir.mk
--include Test/Debug/Aplication_test/subdir.mk
--include Test/Debug/Aplication/ring_buffer/subdir.mk
--include Test/Debug/Aplication/request/subdir.mk
--include Test/Debug/Aplication/led/subdir.mk
--include Test/Debug/Aplication/ldr/subdir.mk
--include Test/Debug/Aplication/encoder/subdir.mk
--include Test/Debug/Aplication/ESP8266/subdir.mk
+-include startup/subdir.mk
 -include Src/subdir.mk
 -include Platform/usart/subdir.mk
 -include Platform/status_led/subdir.mk
@@ -95,20 +48,17 @@ endif
 SECOUTPUTBUILDVAR += \
 EXECUTABLES \
 
-EXECUTABLES += \
-USER_OBJS \
-
 
 # All Target
-all: rtos_usart_ll.elf
+all: rtos_usart_ll.elf secondary-outputs
 
 # Tool invocations
-	@echo 'No tool found that can build the extension specified with the build artifact name $@'
+rtos_usart_ll.elf: $(OBJS) $(USER_OBJS)
+	arm-atollic-eabi-gcc -o "rtos_usart_ll.elf" $(OBJS) $(USER_OBJS) $(LIBS) -mthumb -mcpu=cortex-m3 -T"C:\Users\dashk\OneDrive\Documents\CubeMx\blink\rtos_usart_ll\STM32F103C8_FLASH.ld" -specs=nosys.specs -static "-Wl,-Map=rtos_usart_ll.map" -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs
+	$(MAKE) --no-print-directory post-build
+
 EXECUTABLES: rtos_usart_ll.elf $(EXECUTABLES)
 	"C:\Program Files (x86)\Atollic\TrueSTUDIO for STM32 9.3.0\ide\jre\bin\java" -jar "C:\Program Files (x86)\Atollic\TrueSTUDIO for STM32 9.3.0\Tools\arm-atollic-reports.jar" sizeinfo list rtos_usart_ll.elf
-
-USER_OBJS: $(OBJS) $(USER_OBJS)
-	gcc  -o "USER_OBJS" $(OBJS) $(USER_OBJS) $(LIBS)
 
 # Other Targets
 clean:
@@ -118,6 +68,8 @@ clean:
 post-build:
 	-arm-atollic-eabi-objcopy.exe -O ihex "rtos_usart_ll.elf" "rtos_usart_ll.hex"
 	-@echo ' '
+
+secondary-outputs: $(SECOUTPUTBUILDVAR)
 
 .PHONY: all clean dependents
 .SECONDARY: post-build

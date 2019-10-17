@@ -15,6 +15,7 @@ eState Encoder_State(void)
     {
       res = eButton;
       ClearButton();
+      return res;
     }
     if(GetRotateStatus())
     {

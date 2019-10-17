@@ -8,9 +8,8 @@ extern const char *PAGES[];
 extern const foo FUNCTIONS[];
 
 void PICKER();
-void PickerSetLed();
-void PICKER_picker();
-void PickerSetLed();
+void PICKER_parse();
+void PickerParseLed();
 
 void ESP_Request(const char ** pages, const foo * functions, uint8_t number);
 

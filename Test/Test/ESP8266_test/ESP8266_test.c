@@ -20,75 +20,79 @@ static void test_esp_reset(void **state)
 
 static void test_esp_mode_station(void **state)
 {
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetModeStation(), 1);
 }
 
 static void test_esp_corrupted_start_ap(void **state)
 {
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     ESP_StopTCPServer(80);
 
-    SetReceiveData("ERROR");
+    SetReceiveData("ERROR", 5);
     assert_int_equal(ESP_SetModeSoftAP(), 0);
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 1);
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_StartTCPServer(80), 1);
 }
 
 static void test_esp_corrupted_set_params_ap(void **state)
 {
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     ESP_StopTCPServer(80);
 
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetModeSoftAP(), 1);
-    SetReceiveData("ERROR");
+    SetReceiveData("ERROR", 5);
     assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 0);
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_StartTCPServer(80), 1);
 }
 
 static void test_esp_corrupted_start_server(void **state)
 {
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     ESP_StopTCPServer(80);
 
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetModeSoftAP(), 1);
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 1);
-    SetReceiveData("ERROR");
+    SetReceiveData("ERROR", 5);
     assert_int_equal(ESP_StartTCPServer(80), 0);
 }
 
 static void test_esp_start(void **state)
 {
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     ESP_StopTCPServer(80);
 
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetModeSoftAP(), 1);
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_SetParamsSoftAP("ssid", "passwd"), 1);
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_StartTCPServer(80), 1);
 }
 
 static void test_esp_stop(void **state)
 {
-    SetReceiveData("OK");
+    SetReceiveData("OK", 2);
     assert_int_equal(ESP_StopTCPServer(80), 1);
 }
 
 static void test_esp_send_data(void **state)
 {
-    SetReceiveData(">");
+    ClearSendData();
+    SetReceiveData(">", 1);
     char test[] = "send test data";
+    char answer[] = "AT+CIPSEND=0,14\r\nsend test data";
     ESP_SendData(test, strlen(test), 0);
-
-    assert_int_equal(GetSendData()[0], 'a');
+    for(int i = 0; i < 14; i++)
+    {
+        assert_int_equal(GetSendData()[i], answer[i]);
+    }
 }
 
 int main(void)

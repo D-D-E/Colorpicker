@@ -15,10 +15,14 @@ uint16_t LDR_Get(void)
 	for(int i = 0; i < N; i++)
 	{
 		ADC1_Activate();
-		adc += (((4095 - ADC1_Get()) * 65535) / 4095);
+		uint16_t adc_value = ADC1_Get();
 
-		adc_value = adc / N;
+		if(adc_value > 4095) // additional overflow protection
+		    adc_value = 4095;
+
+		adc += (4095 - adc_value);
 	}
+	adc_value = adc / N;
 
 	return adc_value;
 }

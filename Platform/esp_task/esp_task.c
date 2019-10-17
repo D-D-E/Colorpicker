@@ -1,5 +1,6 @@
 #include "esp_task.h"
 #include "ESP8266.h"
+#include "delay.h"
 #include "request.h"
 #include "status_led.h"
 #include "cmsis_os.h"
@@ -10,8 +11,8 @@ static uint8_t espStart(int fails)
 	while((ESP_SetModeSoftAP()==0) || (ESP_SetParamsSoftAP("ESP", "12345678")==0) || (ESP_StartTCPServer(80)==0))
 	{
 		gMissConnection++;
-		////LL_mDelay(200);
 		ESP_Resset();
+		delay(1000);
 		if(gMissConnection >= fails)
 		{
 			return 0;

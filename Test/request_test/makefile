@@ -11,16 +11,16 @@ RM := rm -rf
 -include cmocka/subdir.mk
 -include Test/request_test/subdir.mk
 -include Test/mock_obj/usart/subdir.mk
+-include Test/mock_obj/led_mock/subdir.mk
 -include Test/mock_obj/led_driver/subdir.mk
 -include Test/mock_obj/ldr_driver/subdir.mk
 -include Test/mock_obj/esp_mock/subdir.mk
 -include Test/mock_obj/encoder_driver/subdir.mk
 -include Test/mock_obj/delay/subdir.mk
--include Aplication/ring_buffer/subdir.mk
--include Aplication/request/subdir.mk
--include Aplication/led/subdir.mk
--include Aplication/ldr/subdir.mk
--include Aplication/encoder/subdir.mk
+-include APL/ring_buffer/subdir.mk
+-include APL/request/subdir.mk
+-include APL/ldr/subdir.mk
+-include APL/encoder/subdir.mk
 -include subdir.mk
 -include objects.mk
 

@@ -1,7 +1,7 @@
 #include "ring_buffer.h"
 
 uint16_t index_in, index_out;
-char buffer[BUF_SIZE]; // not __IO, mb not work with optimization
+char buffer[BUF_SIZE];
 
 void RingBuff_Init()
 {

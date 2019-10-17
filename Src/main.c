@@ -38,7 +38,6 @@ int main(void)
   {
 
   }
-
 }
 
 void SystemClock_Config(void)

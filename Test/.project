@@ -25,14 +25,20 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Aplication</name>
+			<name>APL</name>
 			<type>2</type>
-			<location>C:/Users/dashk/OneDrive/Documents/CubeMx/blink/rtos_usart_ll/Aplication</location>
+			<locationURI>APL</locationURI>
 		</link>
 		<link>
 			<name>cmocka</name>
 			<type>2</type>
-			<location>C:/Users/dashk/OneDrive/Documents/CubeMx/blink/rtos_usart_ll/Test/cmocka</location>
+			<locationURI>$%7BPROJECT_LOC%7D/cmocka</locationURI>
 		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>APL</name>
+			<value>$%7BPARENT-1-PROJECT_LOC%7D/Aplication</value>
+		</variable>
+	</variableList>
 </projectDescription>

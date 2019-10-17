@@ -6,7 +6,7 @@
 #include "ESP8266.h"
 
 const char *PAGES[] = {"GET /PICKER ", "GET /PICKER?picker="};
-const foo FUNCTIONS[] = {PICKER, PICKER_picker};
+const foo FUNCTIONS[] = {PICKER, PICKER_parse};
 
 const char htmlpicker1[] = {"<html><head><title>ESP8266</title></head><body><script>let flag = true;function setFlag(){flag = false;};function reload(){console.log(flag);if(flag){document.location.reload(true);}};setTimeout(reload, 5000);</script><p>Choose your color:</p><form method=\"get\"><input type=\"color\" value=\"#"};
 const char htmlpicker2[] = {"\" id=\"cp\" onclick=\"setFlag()\" name=\"picker\" /><input type=\"submit\" value=\"SEND\" /></form></body></html>"};
@@ -18,7 +18,7 @@ const char statusNOTFOUND[] = {"HTTP/1.1 404 Not Found\r\n"};
 
 void PICKER()
 {
-	char hex[7], ContentLength[22];
+	char hex[7] = {0x00, 0x00, 0x00}, ContentLength[22];
 
 	ESP_SendConstData(statusOK, strlen(statusOK), 1);
 
@@ -26,14 +26,14 @@ void PICKER()
 	sprintf(ContentLength, "Content-Length: %04d\r\n", length);
 	ESP_SendData(ContentLength, 22, 1);
 
-	sprintf(hex, "%02x%02x%02x", Led_Get_Color(eRed)*255/65535, Led_Get_Color(eGreen)*255/65535, Led_Get_Color(eBlue)*255/65535);
+	sprintf(hex, "%02x%02x%02x", Led_Get_Color(eRed)*255/4095, Led_Get_Color(eGreen)*255/4095, Led_Get_Color(eBlue)*255/4095);
 
 	ESP_SendConstData(htmlpicker1, strlen(htmlpicker1), 0);
 	ESP_SendData(hex, 6, 0);
 	ESP_SendConstData(htmlpicker2, strlen(htmlpicker2), 1);
 }
 
-void PickerSetLed()
+void PickerParseLed()
 {
 	char * search;
 	search = strstr(ESP_GetAnswer(), "?picker=%");
@@ -48,13 +48,13 @@ void PickerSetLed()
 			hex[1] = ESP_GetAnswer()[position + 1];
 			colors[l] = strtol(hex, NULL, 16);
 		}
-		Led_Set(colors[0]*65535/255, colors[1]*65535/255, colors[2]*65535/255);
+		Led_Set(colors[0]*4095/255, colors[1]*4095/255, colors[2]*4095/255);
 	}
 }
 
-void PICKER_picker()
+void PICKER_parse()
 {
-	PickerSetLed();
+	PickerParseLed();
 
 	PICKER();
 }

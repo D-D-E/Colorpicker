@@ -3,5 +3,5 @@ uart.c:12:6:USART_SendData	16	static
 uart.c:22:6:USART_CharReception_Callback	16	static
 uart.c:31:6:Error_Callback	8	static
 uart.c:44:6:USART1_IRQHandler	0	static
-uart.c:56:6:USART1_Reset	16	static
+uart.c:56:6:USART1_Device_Reset	16	static
 uart.c:63:6:MX_USART1_UART_Init	80	static
