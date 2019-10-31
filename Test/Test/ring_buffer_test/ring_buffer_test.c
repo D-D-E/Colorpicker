@@ -22,6 +22,30 @@ static void test_ring_buffer_push_const(void **state)
     assert_int_equal(RingBuff_IsEmpty(), 1);
 }
 
+static void test_ring_buffer_push_overwrite(void **state)
+{
+    RingBuff_Init();
+
+    for(int i = 0; i < 1024; i++)
+    {
+        if(i < 512)
+        {
+            RingBuff_Push('c');
+        }
+        else
+        {
+            RingBuff_Push('v');
+        }
+    }
+
+    for(int i = 0; i < 512; i++)
+    {
+        assert_int_equal(RingBuff_Pop(), 'v');
+    }
+
+    assert_int_equal(RingBuff_IsEmpty(), 1);
+}
+
 static void test_ring_buffer_push_rand(void **state)
 {
     RingBuff_Init();
@@ -51,6 +75,7 @@ int main(void)
     const struct CMUnitTest tests[] =
     {
             cmocka_unit_test(test_ring_buffer_push_const)
+            ,cmocka_unit_test(test_ring_buffer_push_overwrite)
            ,cmocka_unit_test(test_ring_buffer_push_rand)
            ,cmocka_unit_test(test_ring_buffer_clear)
     };

@@ -10,8 +10,8 @@ void LedInit(void)
 
 static uint16_t OverflowProtection(uint16_t value)
 {
-    if(value > 4095)
-        return 4095;
+    if(value > 4096)
+        return 4096;
     return value;
 }
 
@@ -48,7 +48,7 @@ uint16_t Led_Get_Color(color color)
 
 static uint16_t map(uint16_t value, uint16_t max_value)
 {
-	uint16_t map_res = value * max_value / 4095;
+	uint16_t map_res = value * max_value / 4096;
 
 	return map_res;
 }

@@ -175,7 +175,7 @@ extern "C" {
 #endif
 
 #ifndef INCLUDE_xTaskGetIdleTaskHandle
-	#define INCLUDE_xTaskGetIdleTaskHandle 0
+	#define INCLUDE_xTaskGetIdleTaskHandle 1
 #endif
 
 #ifndef INCLUDE_xTaskAbortDelay
@@ -191,11 +191,11 @@ extern "C" {
 #endif
 
 #ifndef INCLUDE_xTaskGetHandle
-	#define INCLUDE_xTaskGetHandle 0
+	#define INCLUDE_xTaskGetHandle 1
 #endif
 
 #ifndef INCLUDE_uxTaskGetStackHighWaterMark
-	#define INCLUDE_uxTaskGetStackHighWaterMark 0
+	#define INCLUDE_uxTaskGetStackHighWaterMark 1
 #endif
 
 #ifndef INCLUDE_eTaskGetState
@@ -405,7 +405,7 @@ extern "C" {
 #endif
 
 #ifndef configCHECK_FOR_STACK_OVERFLOW
-	#define configCHECK_FOR_STACK_OVERFLOW 0
+	#define configCHECK_FOR_STACK_OVERFLOW 1
 #endif
 
 /* The following event macros are embedded in the kernel API calls. */

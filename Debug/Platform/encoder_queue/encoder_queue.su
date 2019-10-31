@@ -1,4 +1,4 @@
 encoder_queue.c:7:6:EncoderQueueInit	8	static
-encoder_queue.c:12:6:EncoderQueue_Send	4	static
+encoder_queue.c:12:6:EncoderQueue_Send	24	static
 encoder_queue.c:20:19:EncoderQueue_Receive	16	static
 encoder_queue.c:26:6:EncoderQueue_IsElements	8	static

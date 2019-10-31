@@ -1,4 +1,8 @@
-status_led.c:4:6:StatusLedInit	40	static
-status_led.c:19:6:StatusLedON	0	static
-status_led.c:24:6:StatusLedOFF	0	static
-status_led.c:29:6:ErrorBlink	8	static
+stm32f1xx_ll_bus.h:779:22:LL_APB2_GRP1_EnableClock	24	static
+stm32f1xx_ll_gpio.h:820:22:LL_GPIO_SetOutputPin	16	static
+stm32f1xx_ll_gpio.h:849:22:LL_GPIO_ResetOutputPin	16	static
+stm32f1xx_ll_gpio.h:878:22:LL_GPIO_TogglePin	16	static
+status_led.c:7:6:StatusLedInit	32	static
+status_led.c:22:6:StatusLedON	8	static
+status_led.c:27:6:StatusLedOFF	8	static
+status_led.c:32:6:ErrorBlink	8	static

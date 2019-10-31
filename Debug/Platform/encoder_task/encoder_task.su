@@ -1,2 +1,2 @@
-encoder_task.c:6:13:pxEncoder	8	static
+encoder_task.c:6:13:pxEncoder	16	static
 encoder_task.c:41:6:EncoderTaskInit	16	static

@@ -10,6 +10,9 @@
 #include "ESP8266.h"
 
 char test[] = "AT+CIPSEND=0,26\r\nHTTP/1.1 404 Not Found\r\n";
+
+char htmlpicker[] = "<html><head><title>ESP8266</title></head><body><script>let flag = true;function setFlag(){flag = false;};function reload(){console.log(flag);if(flag){document.location.reload(true);}};setTimeout(reload, 5000);</script><p>Choose your color:</p><form method=\"get\"><input type=\"color\" value=\"#000000\" id=\"cp\" onclick=\"setFlag()\" name=\"picker\" /><input type=\"submit\" value=\"SEND\" /></form></body></html>";
+
 char NOT_FOUND[] = "+IPD,0,498:GET /NEXIST HTTP/1.1\r\nHost: 192.168.4.1\r\nConnection: keep-alive\r\nCache-Control: max-age=0\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36<\r><\n>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\n  >";
 char INCORRECTID[] = "+IPD,8,498:GET /PICKER HTTP/1.1\r\nHost: 192.168.4.1\r\nConnection: keep-alive\r\nCache-Control: max-age=0\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36<\r><\n>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\n   >";
 char CORRECT_ID0[] = "+IPD,0,498:GET /PICKER HTTP/1.1\r\nHost: 192.168.4.1\r\nConnection: keep-alive\r\nCache-Control: max-age=0\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36<\r><\n>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\n  >";
@@ -24,8 +27,6 @@ static void test_esp_request_empty(void **state)
 {
     ClearSendData();
     SetReceiveData(" ", 1);
-    ESP_Request(NULL, NULL, 0);
-    ESP_Request(PAGES, FUNCTIONS, 2);
     for(int i = 0; i < 512; i++)
     {
         assert_int_equal(0, GetSendData()[i]);
@@ -58,6 +59,7 @@ static void test_esp_request_page_found_id0(void **state)
     SetReceiveData(CORRECT_ID0, strlen(CORRECT_ID0));
     ESP_Request(PAGES, FUNCTIONS, 2);
     assert_int_equal(0, GetLinkID());
+    assert_memory_equal(htmlpicker, GetSendData(), strlen(htmlpicker));
 }
 
 static void test_esp_request_page_found_id1(void **state)

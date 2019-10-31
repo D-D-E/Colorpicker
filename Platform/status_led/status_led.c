@@ -1,5 +1,8 @@
 #include "status_led.h"
 #include "main.h"
+#include "delay.h"
+#include "cmsis_os.h"
+
 
 void StatusLedInit(void)
 {
@@ -31,6 +34,6 @@ void ErrorBlink()
 	while(1)
 	{
 		LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_13);
-		LL_mDelay(200);
+		delay(200);
 	}
 }

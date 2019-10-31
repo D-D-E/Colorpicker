@@ -1,4 +1,4 @@
 ldr_queue.c:6:6:LDRQueueInit	8	static
-ldr_queue.c:11:6:LDRQueue_Send	16	static
+ldr_queue.c:11:6:LDRQueue_Send	24	static
 ldr_queue.c:17:10:LDRQueue_Receive	16	static
 ldr_queue.c:24:6:LDRQueue_IsElements	8	static

@@ -85,6 +85,35 @@
  */
 
 /*-----------------------------------------------------------*/
+#include "main.h"
+#include "delay.h"
+#include "FreeRTOS.h"
+#include "task.h"
+
+#pragma GCC push_options
+#pragma GCC optimize ("O0") //__attribute__((optimize("O0")))
+
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+	char * task_name = pcTaskName;
+	 //ESP Led LDR Encoder
+	//UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
+
+	UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
+	UBaseType_t uxHighWaterMarkESP = uxTaskGetStackHighWaterMark(  xTaskGetHandle("ESP")  );
+	UBaseType_t uxHighWaterMarkLed = uxTaskGetStackHighWaterMark( xTaskGetHandle("Led") );
+	UBaseType_t uxHighWaterMarkLDR = uxTaskGetStackHighWaterMark(  xTaskGetHandle("LDR") );
+	UBaseType_t uxHighWaterMarkEncoder = uxTaskGetStackHighWaterMark( xTaskGetHandle("Encoder") );
+
+	int free_heap = xPortGetFreeHeapSize();
+
+	while(1)
+	{
+		LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_13);
+		delay(200);
+	}
+}
+#pragma GCC pop_options
 
 #if( ( configCHECK_FOR_STACK_OVERFLOW == 1 ) && ( portSTACK_GROWTH < 0 ) )
 

@@ -19,46 +19,60 @@ static void test_led_set_all(void **state)
     assert_int_equal(10, Led_Get_Color(eRed));
     assert_int_equal(100, Led_Get_Color(eGreen));
     assert_int_equal(1000, Led_Get_Color(eBlue));
-    Led_Refresh(4095);
+    Led_Refresh(4096);
     assert_int_equal(10, Get_CH1());
     assert_int_equal(100, Get_CH2());
     assert_int_equal(1000, Get_CH3());
+    Led_Refresh(2048);
+    assert_int_equal(5, Get_CH1());
+    assert_int_equal(50, Get_CH2());
+    assert_int_equal(500, Get_CH3());
 }
 
 static void test_led_set_red(void **state)
 {
     Led_Set_Color(eRed, 20);
     assert_int_equal(20, Led_Get_Color(eRed));
-    Led_Refresh(4095);
+    Led_Refresh(4096);
     assert_int_equal(20, Get_CH1());
+    Led_Refresh(2048);
+    assert_int_equal(10, Get_CH1());
 }
 
 static void test_led_set_green(void **state)
 {
     Led_Set_Color(eGreen, 30);
     assert_int_equal(30, Led_Get_Color(eGreen));
-    Led_Refresh(4095);
+    Led_Refresh(4096);
     assert_int_equal(30, Get_CH2());
+    Led_Refresh(2048);
+    assert_int_equal(15, Get_CH2());
 }
 
 static void test_led_set_blue(void **state)
 {
     Led_Set_Color(eBlue, 40);
     assert_int_equal(40, Led_Get_Color(eBlue));
-    Led_Refresh(4095);
+    Led_Refresh(4096);
     assert_int_equal(40, Get_CH3());
+    Led_Refresh(2048);
+    assert_int_equal(20, Get_CH3());
 }
 
 static void test_led_set_oversize(void **state)
 {
     Led_Set(70000, 70000, 70000);
-    assert_int_equal(4095, Led_Get_Color(eRed));
-    assert_int_equal(4095, Led_Get_Color(eGreen));
-    assert_int_equal(4095, Led_Get_Color(eBlue));
-    Led_Refresh(4095);
-    assert_int_equal(4095, Get_CH1());
-    assert_int_equal(4095, Get_CH2());
-    assert_int_equal(4095, Get_CH3());
+    assert_int_equal(4096, Led_Get_Color(eRed));
+    assert_int_equal(4096, Led_Get_Color(eGreen));
+    assert_int_equal(4096, Led_Get_Color(eBlue));
+    Led_Refresh(4096);
+    assert_int_equal(4096, Get_CH1());
+    assert_int_equal(4096, Get_CH2());
+    assert_int_equal(4096, Get_CH3());
+    Led_Refresh(2048);
+    assert_int_equal(2048, Get_CH1());
+    assert_int_equal(2048, Get_CH2());
+    assert_int_equal(2048, Get_CH3());
 }
 
 static void test_led_set_rand(void **state)
@@ -68,25 +82,33 @@ static void test_led_set_rand(void **state)
         uint16_t rand_value = rand();
         Led_Set(rand_value, rand_value, rand_value);
 
-        if(rand_value > 4095)
+        if(rand_value > 4096)
         {
-            assert_int_equal(4095, Led_Get_Color(eRed));
-            assert_int_equal(4095, Led_Get_Color(eGreen));
-            assert_int_equal(4095, Led_Get_Color(eBlue));
-            Led_Refresh(4095);
-            assert_int_equal(4095, Led_Get_Color(eRed));
-            assert_int_equal(4095, Led_Get_Color(eGreen));
-            assert_int_equal(4095, Led_Get_Color(eBlue));
+            assert_int_equal(4096, Led_Get_Color(eRed));
+            assert_int_equal(4096, Led_Get_Color(eGreen));
+            assert_int_equal(4096, Led_Get_Color(eBlue));
+            Led_Refresh(4096);
+            assert_int_equal(4096, Led_Get_Color(eRed));
+            assert_int_equal(4096, Led_Get_Color(eGreen));
+            assert_int_equal(4096, Led_Get_Color(eBlue));
+            Led_Refresh(2048);
+            assert_int_equal(2048, Get_CH1());
+            assert_int_equal(2048, Get_CH2());
+            assert_int_equal(2048, Get_CH3());
         }
         else
         {
             assert_int_equal(rand_value, Led_Get_Color(eRed));
             assert_int_equal(rand_value, Led_Get_Color(eGreen));
             assert_int_equal(rand_value, Led_Get_Color(eBlue));
-            Led_Refresh(4095);
+            Led_Refresh(4096);
             assert_int_equal(rand_value, Get_CH1());
             assert_int_equal(rand_value, Get_CH2());
             assert_int_equal(rand_value, Get_CH3());
+            Led_Refresh(2048);
+            assert_int_equal(rand_value / 2, Get_CH1());
+            assert_int_equal(rand_value / 2, Get_CH2());
+            assert_int_equal(rand_value / 2, Get_CH3());
         }
     }
 }

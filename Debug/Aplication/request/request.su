@@ -1,5 +1,7 @@
-request.c:19:6:PICKER	56	static
-request.c:36:6:PickerParseLed	32	static
-request.c:55:6:PICKER_parse	8	static
-request.c:62:9:requestConstFind	8	static
-request.c:72:6:ESP_Request	24	static
+request.c:22:6:CONFIG	40	static
+request.c:35:6:CONFIG_parse	152	static
+request.c:77:6:PICKER	64	static
+request.c:95:6:PickerParseLed	48	static
+request.c:115:6:PICKER_parse	8	static
+request.c:122:9:requestConstFind	16	static
+request.c:133:6:ESP_Request	32	static

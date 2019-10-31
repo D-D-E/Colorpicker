@@ -1,5 +1,7 @@
-led.c:6:6:LedInit	0	static
-led.c:11:6:Led_Set	0	static
-led.c:18:6:Led_Set_Color	0	static
-led.c:30:10:Led_Get_Color	0	static
-led.c:54:6:Led_Refresh	16	static
+led.c:6:6:LedInit	8	static
+led.c:11:17:OverflowProtection	16	static
+led.c:18:6:Led_Set	16	static
+led.c:25:6:Led_Set_Color	16	static
+led.c:37:10:Led_Get_Color	16	static
+led.c:49:17:map	24	static
+led.c:56:6:Led_Refresh	16	static

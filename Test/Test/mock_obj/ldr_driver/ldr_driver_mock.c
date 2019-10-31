@@ -17,7 +17,7 @@ uint16_t ADC1_Get()
 {
     if(random_active)
     {
-        ADC1_value = random_range_min + rand() % random_range_max;
+        ADC1_value = random_range_min + rand() % (random_range_max - random_range_min);
     }
     return ADC1_value;
 }

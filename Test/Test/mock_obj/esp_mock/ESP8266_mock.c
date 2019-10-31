@@ -179,30 +179,6 @@ uint8_t charCallBack(char * key)
     return 0;
 }
 
-uint8_t ESP_SendData(char *data, uint16_t dataLength, uint8_t flagRN)
-{
-    requestFlush();
-    sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, flagRN ? dataLength + 2 : dataLength);
-    USART_SendData(request, strlen(request));
-
-    if(waitCallBack(">", 20) && data != NULL)
-    {
-        for(int i = 0; i < dataLength; i++)
-        {
-            USART_SendData_byte(data[i]);
-        }
-        if(flagRN)
-        {
-            USART_SendData("\r\n", 2);
-        }
-    }
-    else return 0;
-
-    delay(100);
-
-    return 1;
-}
-
 uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 {
     requestFlush();

@@ -2308,7 +2308,7 @@ TCB_t *pxTCB;
 			}
 			#endif
 		}
-		( void ) xTaskResumeAll();
+		//( void ) xTaskResumeAll();
 
 		return ( TaskHandle_t ) pxTCB;
 	}

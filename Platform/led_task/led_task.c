@@ -6,7 +6,7 @@
 
 static uint16_t constrain(int32_t value)
 {
-	if(value > 4095) value = 4095;
+	if(value > 4096) value = 4096;
 	if(value < 0) value = 0;
 	return value;
 }
@@ -15,7 +15,7 @@ static void pxLed(void * arg)
 {
 	LedInit();
 
-	uint16_t ldr_value = 4095;
+	uint16_t ldr_value = 4096, ldr_value_old = 4096;
 	EncoderRotateInfo xEncoder_info;
 
 	while(1)
@@ -56,7 +56,17 @@ static void pxLed(void * arg)
 			 ldr_value = LDRQueue_Receive();
 		}
 
-		Led_Refresh(ldr_value);
+		while(!(ldr_value_old == ldr_value))
+		{
+			if(ldr_value_old > ldr_value)
+			{
+				Led_Refresh(ldr_value_old--);
+			}
+			else Led_Refresh(ldr_value_old++);
+
+			osDelay(1);
+		}
+		ldr_value_old = ldr_value;
 		osDelay(10);
 	}
 }

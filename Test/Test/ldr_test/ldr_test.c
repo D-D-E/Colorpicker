@@ -19,11 +19,18 @@ static void test_ldr_get_rand_small(void **state)
     assert_in_range(LDR_Get(), 3995, 4095);
 }
 
-static void test_ldr_get_rand_small_bias(void **state)
+static void test_ldr_get_rand_bias(void **state)
 {
     LDRInit();
     SetADC1_random(500, 700);
     assert_in_range(LDR_Get(), 3295, 3595);
+}
+
+static void test_ldr_get_rand_small_bias(void **state)
+{
+    LDRInit();
+    SetADC1_random(400, 405);
+    assert_in_range(LDR_Get(), 3690, 3695);
 }
 
 static void test_ldr_get_rand_large(void **state)
@@ -31,6 +38,13 @@ static void test_ldr_get_rand_large(void **state)
     LDRInit();
     SetADC1_random(0, 4095);
     assert_in_range(LDR_Get(), 0, 4095);
+}
+
+static void test_ldr_get_rand_large_bias(void **state)
+{
+    LDRInit();
+    SetADC1_random(3995, 4095);
+    assert_in_range(LDR_Get(), 0, 100);
 }
 
 static void test_ldr_get_overflow(void **state)
@@ -46,8 +60,10 @@ int main(void)
     {
         cmocka_unit_test(test_ldr_get_const)
        ,cmocka_unit_test(test_ldr_get_rand_small)
+       ,cmocka_unit_test(test_ldr_get_rand_bias)
        ,cmocka_unit_test(test_ldr_get_rand_small_bias)
        ,cmocka_unit_test(test_ldr_get_rand_large)
+       ,cmocka_unit_test(test_ldr_get_rand_large_bias)
        ,cmocka_unit_test(test_ldr_get_overflow)
     };
 

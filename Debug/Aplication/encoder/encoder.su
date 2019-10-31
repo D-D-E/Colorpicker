@@ -1,2 +1,2 @@
-encoder.c:6:6:EncoderInit	0	static
-encoder.c:11:8:Encoder_State	8	static
+encoder.c:6:6:EncoderInit	8	static
+encoder.c:11:8:Encoder_State	24	static

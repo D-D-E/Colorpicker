@@ -1,2 +1,3 @@
-esp_task.c:24:13:pxESP	8	static
-esp_task.c:43:6:ESPTaskInit	16	static
+esp_task.c:13:16:espStart	16	static
+esp_task.c:37:13:pxESP	152	static
+esp_task.c:68:6:ESPTaskInit	16	static

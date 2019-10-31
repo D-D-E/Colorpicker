@@ -5,12 +5,35 @@
 #include "stdlib.h"
 #include "stdbool.h"
 #include "delay.h"
+#include "cmsis_os.h"
 #include "uart.h"
 
-char request[512];
-char answer[512];
+char request[1025];
+char answer[1025];
+
+char ssid[64], paswd[64];
+char dns[15];
+
 uint8_t linkID;
 uint8_t TCPServerFlag = 0;
+
+static bool waitCallBack(char * aim, uint16_t ms)
+{
+	uint32_t time_end = get_sys_tick() + ms;
+	uint32_t time = get_sys_tick();
+	while(time_end > time)
+	{
+		time++;
+		if(charCallBack(aim))
+		{
+			return 1;
+		}
+		else asm("NOP");
+
+		osDelay(1);
+	}
+	return 0;
+}
 
 void ESPInit()
 {
@@ -21,44 +44,49 @@ void ESPInit()
 void ESP_Resset()
 {
 	USART1_Device_Reset();
+	if(waitCallBack("ready", 2000))
+	{
+		return;
+	}
 }
 
 static void requestFlush()
 {
-	memset(request, '0', 512);
+	memset(request, 0, sizeof(request));
+	//request[1023] = 0;
 }
 
 static void answerFlush()
 {
-	memset(answer, '0', 512);
-}
-
-static bool waitCallBack(char * aim, uint8_t ms)
-{
-	uint32_t time = get_sys_tick();
-	while(time + ms > get_sys_tick())
-	{
-		if(charCallBack(aim))
-		{
-			return 1;
-		}
-	}
-	return 0;
+	memset(answer, 0, sizeof(answer));
+	//answer[1023] = 0;
 }
 
 uint8_t ESP_SetMode(int mode)
 {
 	requestFlush();
+
+	if(mode == 1 || mode == 3)
+	{
+		memset(ssid, 0, 64);
+		memset(paswd, 0, 64);
+		USART_SendData("AT+SLEEP=0\r\n", 12);
+	}
+
 	sprintf(request, "AT+CWMODE=%d\r\n", mode);
-	//RingBuff_Clear();
+	RingBuff_Clear();
 	USART_SendData(request, strlen(request));
 
 	if(waitCallBack("OK", 20))
 	{
 		USART_SendData("AT+RST\r\n", 8); //restart to apply settings
-		delay(1000);
+		//delay(1000);
 
-		return 1;
+		if(waitCallBack("ready", 2000))
+		{
+			return 1;
+		}
+		else asm("NOP");
 	}
 
 	return 0;
@@ -74,20 +102,66 @@ uint8_t ESP_SetModeSoftAP()
 	return ESP_SetMode(2);
 }
 
+uint8_t ESP_SetModeBoth()
+{
+	return ESP_SetMode(3);
+}
+
 uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
 {
 	if(ssid != NULL && password != NULL)
 	{
 		requestFlush();
 		sprintf(request, "AT+CWSAP=\"%s\",\"%s\",5,3\r\n", ssid, password);
-		//RingBuff_Clear();
-		//charCallBack("");   //clear ring buffer after restart
+		RingBuff_Clear();
 		USART_SendData(request, strlen(request));
 
 		if(waitCallBack("OK", 20))
 		{
 			USART_SendData("AT+RST\r\n", 8); //restart to apply settings
-			delay(1000);
+
+			if(waitCallBack("ready", 2000))
+			{
+				return 1;
+			}
+			else asm("NOP");
+		}
+	}
+
+	return 0;
+}
+
+uint8_t ESP_SetParamsStation(char * ssid, char * password)
+{
+	if(ssid != NULL && password != NULL)
+	{
+		requestFlush();
+		sprintf(request, "AT+CWJAP=\"%s\",\"%s\"\r\n", ssid, password);
+		RingBuff_Clear();
+		//charCallBack("");   //clear ring buffer after restart
+		USART_SendData(request, strlen(request));
+
+		if(waitCallBack("OK", 10000))
+		{
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+uint8_t ESP_SetParamsDNS(char * name)
+{
+	if(name != NULL)
+	{
+		requestFlush();
+		sprintf(request, "AT+CIPDNS_CUR=1,\"%s\"\r\n", name);
+		RingBuff_Clear();
+		//charCallBack("");   //clear ring buffer after restart
+		USART_SendData(request, strlen(request));
+
+		if(waitCallBack("OK", 20))
+		{
 			return 1;
 		}
 	}
@@ -100,14 +174,17 @@ uint8_t ESP_StartTCPServer(uint16_t port)
     if(!TCPServerFlag)
     {
         USART_SendData("AT+CIPMUX=1\r\n", 13);
-        delay(100);
+        if(!waitCallBack("OK", 100))
+        {
+        	return 0;
+        }
 
         requestFlush();
         sprintf(request, "AT+CIPSERVER=1,%d\r\n", port);
-    	//RingBuff_Clear();
-        //charCallBack("");   //clear ring buffer after restart
-        USART_SendData(request, strlen(request));
 
+        RingBuff_Clear();
+        USART_SendData(request, strlen(request));
+		//USART_SendData("AT+MDNS=1,\"espressif\",\"iot\",80\r\n", 32);
         if(waitCallBack("OK", 20))
         {
             TCPServerFlag = 1;
@@ -124,7 +201,7 @@ uint8_t ESP_StopTCPServer(uint16_t port)
 	{
 		requestFlush();
 		sprintf(request, "AT+CIPSERVER=0,%d\r\n", port);
-		//RingBuff_Clear();
+		RingBuff_Clear();
 		USART_SendData(request, strlen(request));
 
 		if(waitCallBack("OK", 20))
@@ -140,9 +217,10 @@ uint8_t requestRefresh()
 {
 	answerFlush();
 	int i = 0;
-	while(!(RingBuff_IsEmpty()) && i < 512)
+	while(!(RingBuff_IsEmpty()) && i < 1024)
 	{
 		answer[i++] = RingBuff_Pop();
+		osDelay(1);
 	}
 
 	char * search;
@@ -159,14 +237,21 @@ uint8_t requestRefresh()
 	return 100;
 }
 
-uint8_t charCallBack(char * key)
+uint16_t charCallBack(char * key)
 {
 	answerFlush();
 	uint16_t i = 0;
-	while(!(RingBuff_IsEmpty()) && i < 512)
+	while(!(RingBuff_IsEmpty()) && i < 1024)
 	{
-		answer[i++] = RingBuff_Pop();
+		answer[i] = RingBuff_Pop();
+
+		if(answer[i] == 0)
+		{
+			answer[i] = '0';
+		}
+		i++;
 	}
+	answer[1024] = 0;
 
 	if(key != NULL && strlen(answer) >= strlen(key))
 	{
@@ -179,33 +264,18 @@ uint8_t charCallBack(char * key)
 	return 0;
 }
 
-uint8_t ESP_SendData(char *data, uint16_t dataLength, uint8_t flagRN)
+uint8_t charCallBackNoFlush(char * key, uint16_t bias)
 {
-	requestFlush();
-	sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, flagRN ? (dataLength + 2) : dataLength);
-	USART_SendData(request, strlen(request));
-
-	if(waitCallBack(">", 20) && data != NULL)
+	char * temp = (char *)answer + bias;
+	if(key != NULL && strlen(temp) >= strlen(key))
 	{
-		for(int i = 0; i < dataLength; i++)
+		if(strstr(temp, key) != NULL)
 		{
-			USART_SendData_byte(data[i]);
-		}
-		if(flagRN)
-		{
-			USART_SendData("\r\n", 2);
+			return 1;
 		}
 	}
-	else return 0;
 
-	delay(100);
-
-//    if(waitCallBack("SEND OK", 100))
-//    {
-//        return 1;
-//    }
-
-	return 1;
+	return 0;
 }
 
 uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
@@ -213,9 +283,9 @@ uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 	requestFlush();
 	sprintf(request, "AT+CIPSEND=%d,%d\r\n", linkID, flagRN ? (dataLength + 2) : dataLength);
 	USART_SendData(request, strlen(request));
-	delay(200);
+	//delay(200);
 
-	if(waitCallBack(">", 20) && data != NULL)
+	if(waitCallBack(">", 200) && data != NULL)
 	{
 		for(int i = 0; i < dataLength; i++)
 		{
@@ -229,12 +299,12 @@ uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 	else return 0;
 	delay(100);
 
-//    if(waitCallBack("SEND OK", 100))
-//    {
-//        return 1;
-//    }
+//	if(waitCallBack("SEND OK", 200))
+//	{
+//		return 1;
+//	}
 
-	return 1;
+	return 0;
 }
 
 void SetLinkID(uint8_t ID)
@@ -252,22 +322,22 @@ char * ESP_GetAnswer(void)
 	return answer;
 }
 
+void SetSSID(char * name)
+{
+	memcpy(ssid, name, 64);
+}
 
-//void ESP_Request(const char ** pages, const foo * functions, uint8_t number)
-//{
-//	linkID = requestRefresh();
-//	if(linkID >= 0 && linkID < 5)
-//	{
-//		for(int i = 0; i < number; i++)
-//		{
-//			if(pages != NULL
-//		       && functions != NULL
-//		       && requestConstFind(pages[i]))
-//			{
-//				functions[i]();
-//				return;
-//			}
-//		}
-//		ESP_SendConstData(statusNOTFOUND, strlen(statusNOTFOUND), 1);
-//	}
-//}
+char * GetSSID()
+{
+	return ssid;
+}
+
+void SetPASWD(char * passwd)
+{
+	memcpy(paswd, passwd, 64);
+}
+
+char *  GetPasw()
+{
+	return paswd;
+}

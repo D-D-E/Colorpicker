@@ -41,19 +41,37 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   * @param  None
   * @retval None
   */
+
+//#pragma GCC push_options
+//#pragma GCC optimize ("O0") //__attribute__((optimize("O0")))
+//void TakeStackSize()
+//{
+//	//UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
+//	UBaseType_t uxHighWaterMarkESP = uxTaskGetStackHighWaterMark(  xTaskGetHandle("ESP")  );
+//	UBaseType_t uxHighWaterMarkLed = uxTaskGetStackHighWaterMark( xTaskGetHandle("Led") );
+//	UBaseType_t uxHighWaterMarkLDR = uxTaskGetStackHighWaterMark(  xTaskGetHandle("LDR") );
+//	UBaseType_t uxHighWaterMarkEncoder = uxTaskGetStackHighWaterMark( xTaskGetHandle("Encoder") );
+//
+//	int free_heap = xPortGetFreeHeapSize();
+//}
+//#pragma GCC pop_options
+
 void MX_FREERTOS_Init(void) {
 
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   EncoderQueueInit();
   LDRQueueInit();
 
   LedTaskInit();
-  ESPTaskInit();
   LDRTaskInit();
   EncoderTaskInit();
+  ESPTaskInit();
+
+  //TakeStackSize();
+
 }
 
 void StartDefaultTask(void const * argument)

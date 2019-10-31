@@ -1,5 +1,5 @@
-ring_buffer.c:6:6:RingBuff_Init	0	static
-ring_buffer.c:11:6:RingBuff_Push	0	static
-ring_buffer.c:17:6:RingBuff_Pop	0	static
-ring_buffer.c:24:9:RingBuff_IsEmpty	0	static
-ring_buffer.c:31:6:RingBuff_Clear	0	static
+ring_buffer.c:6:6:RingBuff_Init	4	static
+ring_buffer.c:11:6:RingBuff_Push	16	static
+ring_buffer.c:17:6:RingBuff_Pop	16	static
+ring_buffer.c:24:9:RingBuff_IsEmpty	4	static
+ring_buffer.c:31:6:RingBuff_Clear	4	static
