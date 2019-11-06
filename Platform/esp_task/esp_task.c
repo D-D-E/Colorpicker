@@ -1,4 +1,5 @@
 #include "esp_task.h"
+#include "i2c.h"
 #include "encoder_driver.h"
 #include "ESP8266.h"
 #include "delay.h"
@@ -12,24 +13,40 @@ static uint8_t gMissConnection = 0;
 
 static uint8_t espStart(int fails)
 {
-	while(ESP_SetModeBoth()==0)
-	{
-		gMissConnection++;
-		ESP_Resset();
-		delay(100);
-		if(gMissConnection >= fails)
-		{
-			return 0;
-		}
-	}
-
 	if(GPIO_Read_Pin(1) == 0)
 	{
-		ESP_SetModeSoftAP();
-		ESP_SetParamsSoftAP("ESP", "12345678");
-	}
+		while(ESP_SetModeSoftAP()==0 || ESP_SetParamsSoftAP("ESP", "12345678")==0 || ESP_StartTCPServer(80)==0)
+		{
+			gMissConnection++;
+			ESP_Resset();
+			if(gMissConnection >= fails)
+			{
+				return 0;
+			}
+		}
 
-	ESP_StartTCPServer(80);
+	}
+	else
+	{
+		char ssid[64], paswd[64];
+		I2C2_ReadData(0xA0, (uint8_t *)ssid, 32);
+		delay(20);
+		I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
+
+		while(strlen(ssid)==0 || ESP_SetModeStation()==0 || ESP_SetParamsStation(ssid, paswd)==0 || ESP_StartTCPServer(80)==0)
+		{
+			I2C2_ReadData(0xA0, (uint8_t *)ssid, 32);
+			delay(20);
+			I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
+
+			gMissConnection++;
+			ESP_Resset();
+			if(gMissConnection >= fails)
+			{
+				return 0;
+			}
+		}
+	}
 
 	return 1;
 }
@@ -50,14 +67,16 @@ static void pxESP(void * arg)
 	{
 		if(strlen(GetSSID()) > 1 && config_flag == 0)
 		{
+			ESP_StopTCPServer(80); //dummy for reset tcp flag
 			config_flag = 1;
-			char ssid[64], paswd[64];
-			strcpy(ssid, GetSSID());
-			strcpy(paswd, GetPasw());
-			if(ESP_SetModeBoth()==0, ESP_SetParamsStation(ssid, paswd)==0)
+
+			if(ESP_SetModeBoth()==0 || ESP_SetParamsStation(GetSSID(), GetPasw())==0 || ESP_StartTCPServer(80)==0)
 			{
 				config_flag = 0;
 			}
+			I2C2_SendData(0xA0, (uint8_t *)GetSSID(), 32);
+			delay(5);
+			I2C2_SendData(0xD0, (uint8_t *)GetPasw(), 32);
 		}
 		ESP_Request(PAGES, FUNCTIONS, 4);
 		osDelay(10);

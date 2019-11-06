@@ -1,5 +1,8 @@
 #include "led_task.h"
 #include "led.h"
+#include "i2c_data.h"
+#include "spi.h"
+#include "delay.h"
 #include "encoder_queue.h"
 #include "ldr_queue.h"
 #include "cmsis_os.h"
@@ -13,10 +16,16 @@ static uint16_t constrain(int32_t value)
 
 static void pxLed(void * arg)
 {
+	I2C_Init();
 	LedInit();
+
+	MX_SPI1_Init();
+	SPI1_SendData((uint8_t *)"hello", 5);
 
 	uint16_t ldr_value = 4096, ldr_value_old = 4096;
 	EncoderRotateInfo xEncoder_info;
+
+	setLedI2C();
 
 	while(1)
 	{

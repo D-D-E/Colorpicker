@@ -21,6 +21,7 @@
 #include "cmsis_os.h"
 #include "gpio.h"
 #include "stdlib.h"
+#include "power_status.h"
 
 
 void SystemClock_Config(void);
@@ -30,7 +31,9 @@ int main(void)
 {
   HAL_Init();
   SystemClock_Config();
-  MX_FREERTOS_Init();
+  MX_FREERTOS_Init(); //recalc stack size
+
+  PowerStatusInit();
 
   osKernelStart();
 

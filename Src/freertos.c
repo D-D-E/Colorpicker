@@ -56,7 +56,7 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 //}
 //#pragma GCC pop_options
 
-void MX_FREERTOS_Init(void) {
+void __attribute__((optimize("O0"))) MX_FREERTOS_Init(void) {
 
   /* definition and creation of defaultTask */
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
@@ -69,9 +69,6 @@ void MX_FREERTOS_Init(void) {
   LDRTaskInit();
   EncoderTaskInit();
   ESPTaskInit();
-
-  //TakeStackSize();
-
 }
 
 void StartDefaultTask(void const * argument)

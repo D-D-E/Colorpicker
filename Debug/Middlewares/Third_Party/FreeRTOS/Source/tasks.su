@@ -1,5 +1,5 @@
 stm32f1xx_ll_gpio.h:878:22:LL_GPIO_TogglePin	16	static
-StackMacros.h:96:6:vApplicationStackOverflowHook	48	static
+StackMacros.h:96:6:vApplicationStackOverflowHook	16	static
 tasks.c:676:13:xTaskCreate	56	static
 tasks.c:767:13:prvInitialiseNewTask	40	static
 tasks.c:963:13:prvAddNewTaskToReadyList	16	static

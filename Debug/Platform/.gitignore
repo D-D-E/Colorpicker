@@ -1,1 +1,5 @@
 /flash/
+/i2c/
+/power_status/
+/crc/
+/spi/

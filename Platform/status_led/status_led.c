@@ -37,3 +37,22 @@ void ErrorBlink()
 		delay(200);
 	}
 }
+
+void ErrorPowerBlink()
+{
+	while(1)
+	{
+		LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_13);
+		delay(100);
+	}
+}
+
+void APModeBlink()
+{
+	for(int i = 0; i < 20; i++)
+	{
+		LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_13);
+		delay(50);
+	}
+	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_13);
+}

@@ -12,19 +12,19 @@ void GPIO_Init()
     EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_RISING;
     LL_EXTI_Init(&EXTI_InitStruct);
 
-    EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_10;
+    EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_14;
     EXTI_InitStruct.LineCommand = ENABLE;
     EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
     EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_FALLING;
     LL_EXTI_Init(&EXTI_InitStruct);
 
     LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE1);
-    LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE10);
+    LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE14);
 
 
 	LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-    GPIO_InitStruct.Pin = LL_GPIO_PIN_1 | LL_GPIO_PIN_10 | LL_GPIO_PIN_11;
+    GPIO_InitStruct.Pin = LL_GPIO_PIN_1 | LL_GPIO_PIN_14 | LL_GPIO_PIN_15;
     GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
     GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
     GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
@@ -47,11 +47,11 @@ void EXTI1_IRQHandler(void)
 
 void EXTI15_10_IRQHandler(void)
 {
-	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_10);
+	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_14);
 
 	rotate_status = true;
-	rotate_pin_A = GPIO_Read_Pin(10);
-	rotate_pin_B = GPIO_Read_Pin(11);
+	rotate_pin_A = GPIO_Read_Pin(14);
+	rotate_pin_B = GPIO_Read_Pin(15);
 }
 
 bool GetButton(void)

@@ -46,6 +46,11 @@ uint16_t Led_Get_Color(color color)
 	return 0;
 }
 
+uint16_t * Led_Get_Arr_Color()
+{
+	return led;
+}
+
 static uint16_t map(uint16_t value, uint16_t max_value)
 {
 	uint16_t map_res = value * max_value / 4096;

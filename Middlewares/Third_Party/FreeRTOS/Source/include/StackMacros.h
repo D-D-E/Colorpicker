@@ -95,17 +95,17 @@
 
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
-	char * task_name = pcTaskName;
-	 //ESP Led LDR Encoder
-	//UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
-
-	UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
-	UBaseType_t uxHighWaterMarkESP = uxTaskGetStackHighWaterMark(  xTaskGetHandle("ESP")  );
-	UBaseType_t uxHighWaterMarkLed = uxTaskGetStackHighWaterMark( xTaskGetHandle("Led") );
-	UBaseType_t uxHighWaterMarkLDR = uxTaskGetStackHighWaterMark(  xTaskGetHandle("LDR") );
-	UBaseType_t uxHighWaterMarkEncoder = uxTaskGetStackHighWaterMark( xTaskGetHandle("Encoder") );
-
-	int free_heap = xPortGetFreeHeapSize();
+//	char * task_name = pcTaskName;
+//	 //ESP Led LDR Encoder
+//	//UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
+//
+//	UBaseType_t uxHighWaterMarkIdle = uxTaskGetStackHighWaterMark( xTaskGetIdleTaskHandle() );
+//	UBaseType_t uxHighWaterMarkESP = uxTaskGetStackHighWaterMark(  xTaskGetHandle("ESP")  );
+//	UBaseType_t uxHighWaterMarkLed = uxTaskGetStackHighWaterMark( xTaskGetHandle("Led") );
+//	UBaseType_t uxHighWaterMarkLDR = uxTaskGetStackHighWaterMark(  xTaskGetHandle("LDR") );
+//	UBaseType_t uxHighWaterMarkEncoder = uxTaskGetStackHighWaterMark( xTaskGetHandle("Encoder") );
+//
+//	int free_heap = xPortGetFreeHeapSize();
 
 	while(1)
 	{

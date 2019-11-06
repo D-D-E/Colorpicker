@@ -1,2 +1,2 @@
 delay.c:3:6:delay	16	static
-delay.c:8:10:get_sys_tick	4	static
+delay.c:8:10:getSysTick	4	static

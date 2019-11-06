@@ -30,6 +30,9 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_ll_adc.h"
+#include "stm32f1xx_ll_crc.h"
+#include "stm32f1xx_ll_i2c.h"
+#include "stm32f1xx_ll_spi.h"
 #include "stm32f1xx_ll_rcc.h"
 #include "stm32f1xx_ll_bus.h"
 #include "stm32f1xx_ll_system.h"

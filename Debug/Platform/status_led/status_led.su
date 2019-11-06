@@ -6,3 +6,5 @@ status_led.c:7:6:StatusLedInit	32	static
 status_led.c:22:6:StatusLedON	8	static
 status_led.c:27:6:StatusLedOFF	8	static
 status_led.c:32:6:ErrorBlink	8	static
+status_led.c:41:6:ErrorPowerBlink	8	static
+status_led.c:50:6:APModeBlink	16	static

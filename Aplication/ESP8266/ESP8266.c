@@ -7,11 +7,12 @@
 #include "delay.h"
 #include "cmsis_os.h"
 #include "uart.h"
+#include "i2c.h"
 
 char request[1025];
 char answer[1025];
 
-char ssid[64], paswd[64];
+char ssid[32], paswd[32];
 char dns[15];
 
 uint8_t linkID;
@@ -19,8 +20,8 @@ uint8_t TCPServerFlag = 0;
 
 static bool waitCallBack(char * aim, uint16_t ms)
 {
-	uint32_t time_end = get_sys_tick() + ms;
-	uint32_t time = get_sys_tick();
+	uint32_t time_end = getSysTick() + ms;
+	uint32_t time = getSysTick();
 	while(time_end > time)
 	{
 		time++;
@@ -68,8 +69,6 @@ uint8_t ESP_SetMode(int mode)
 
 	if(mode == 1 || mode == 3)
 	{
-		memset(ssid, 0, 64);
-		memset(paswd, 0, 64);
 		USART_SendData("AT+SLEEP=0\r\n", 12);
 	}
 
@@ -105,6 +104,14 @@ uint8_t ESP_SetModeSoftAP()
 uint8_t ESP_SetModeBoth()
 {
 	return ESP_SetMode(3);
+}
+
+void ESP_CloseConnection(uint8_t id)
+{
+	requestFlush();
+	sprintf(request, "AT+CIPCLOSEMODE=%u,1", id);
+	RingBuff_Clear();
+	USART_SendData(request, strlen(request));
 }
 
 uint8_t ESP_SetParamsSoftAP(char * ssid, char * password)
@@ -156,6 +163,7 @@ uint8_t ESP_SetParamsDNS(char * name)
 	{
 		requestFlush();
 		sprintf(request, "AT+CIPDNS_CUR=1,\"%s\"\r\n", name);
+		//sprintf(request, "AT+MDNS=1,\"%s\",\"iot\",8080\r\n", name);
 		RingBuff_Clear();
 		//charCallBack("");   //clear ring buffer after restart
 		USART_SendData(request, strlen(request));
@@ -203,10 +211,10 @@ uint8_t ESP_StopTCPServer(uint16_t port)
 		sprintf(request, "AT+CIPSERVER=0,%d\r\n", port);
 		RingBuff_Clear();
 		USART_SendData(request, strlen(request));
+		TCPServerFlag = 0;
 
 		if(waitCallBack("OK", 20))
 		{
-		    TCPServerFlag = 0;
 			return 1;
 		}
 	}
@@ -324,7 +332,7 @@ char * ESP_GetAnswer(void)
 
 void SetSSID(char * name)
 {
-	memcpy(ssid, name, 64);
+	memcpy(ssid, name, 32);
 }
 
 char * GetSSID()
@@ -334,7 +342,7 @@ char * GetSSID()
 
 void SetPASWD(char * passwd)
 {
-	memcpy(paswd, passwd, 64);
+	memcpy(paswd, passwd, 32);
 }
 
 char *  GetPasw()

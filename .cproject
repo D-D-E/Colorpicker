@@ -59,7 +59,12 @@
 									<listOptionValue builtIn="false" value="../Platform/esp_task"/>
 									<listOptionValue builtIn="false" value="../Platform/encoder_task"/>
 									<listOptionValue builtIn="false" value="../Platform/delay"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rtos_usart_ll/Platform/flash}&quot;"/>
+									<listOptionValue builtIn="false" value="../Platform/i2c"/>
+									<listOptionValue builtIn="false" value="../Platform/power_status"/>
+									<listOptionValue builtIn="false" value="../Platform/crc"/>
+									<listOptionValue builtIn="false" value="../Platform/spi"/>
+									<listOptionValue builtIn="false" value="../Aplication/i2c_data"/>
+									<listOptionValue builtIn="false" value="../Aplication/display"/>
 								</option>
 								<option id="com.atollic.truestudio.gcc.symbols.defined.1158108345" name="Defined symbols" superClass="com.atollic.truestudio.gcc.symbols.defined" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="USE_FULL_LL_DRIVER"/>
