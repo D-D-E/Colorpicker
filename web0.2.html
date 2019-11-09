@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>ESP8266</title>
+</head>
+
+<body>
+
+	<script>
+	let flag = true;
+	function setFlag()
+	{
+		flag = false;
+	};
+	function reload()
+	{
+		if(flag){document.location.reload(true);}
+	};
+	setTimeout(reload, 5000);
+	</script>
+
+	<p>Choose your color:</p>
+	<form method="post">
+		<input type="color" value="#000000" id="cp" onclick="setFlag()" name="picker" />
+		<input type="submit" value="SEND" />
+	</form>
+</body>
+
+</html>

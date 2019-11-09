@@ -11,7 +11,7 @@
 const char *PAGES[] = {"GET /PICKER ", "POST /PICKER", "GET /CONFIG ", "POST /CONFIG "};
 const function_pointer FUNCTIONS[] = {PICKER, PICKER_parse, CONFIG, CONFIG_parse};
 
-const char htmlpicker1[] = {"<html><head><title>ESP8266</title></head><body><script>let flag = true;function setFlag(){flag = false;};function reload(){if(flag){window.location.href = window.location.href; document.location.reload(true);}};setTimeout(reload, 5000);</script><p>Choose your color:</p><form enctype=\"text/plain\" method=\"post\"><input type=\"color\" value=\"#"};
+const char htmlpicker1[] = {"<html><head><title>ESP8266</title></head><body><script>let flag = true;function setFlag(){flag = false;};function reload(){if(flag){window.location = window.location.href;}};setTimeout(reload, 5000);</script><p>Choose your color:</p><form enctype=\"text/plain\" method=\"post\"><input type=\"color\" value=\"#"};
 const char htmlpicker2[] = {"\" id=\"cp\" onclick=\"setFlag()\" name=\"picker\" /><input type=\"submit\" value=\"SEND\" /></form></body></html>"};
 
 const char htmlconfig[] = {"<html><head><title>ESP8266_config</title></head><body><script>function getp(){var p = document.getElementById(\"ssid\").value;p=p.replace(\" \",\"?\");document.getElementById(\"ssid\").value=p;console.log(p);};</script><p>Set params:</p><form method=\"post\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"4\"><tr><td align=\"right\" width=\"60\">SSID:</td><td><input type=\"text\" required id=\"ssid\" maxlength=\"32\" name=\"ssid\"/></td></tr><tr><td align=\"right\" width=\"60\">Password:</td><td><input type=\"text\" id=\"paswd\" maxlength=\"32\" name=\"paswd\"/></td></tr><tr><td align=\"right\" width=\"60\"></td><td><input type=\"hidden\" id=\"dns\" name=\"dns\"/></td></tr></table><p><input type=\"submit\" id=\"sb\" onclick=\"getp()\" value=\"SEND\"/></p></form></body></html>"};
@@ -49,7 +49,7 @@ void CONFIG_parse()
 			{
 				break;
 			}
-			if(search[i] == '%' && search[i+1] == '3' && search[i+2] == 'F') // search space code and replace by pace
+			if(search[i] == '%' && search[i+1] == '3' && search[i+2] == 'F') // search space code and replace by space
 			{
 				i += 2;
 				search[i] = ' ';

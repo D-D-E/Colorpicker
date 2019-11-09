@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>ESP8266_config</title>
+</head>
+
+<body>
+
+	<script>
+		function getp(){
+			var p = document.getElementById("ssid").value;
+			p=p.replace(" ","?");
+			document.getElementById("ssid").value=p;
+			console.log(p);
+		};
+	</script>
+
+	<p>Set params:</p>
+	<form method="get">
+		<table width="100%" cellspacing="0" cellpadding="4">
+			<tr>
+				<td align="right" width="60">SSID:</td>
+				<td><input type="text" required id="ssid" maxlength="32" name="ssid"/></td>
+			</tr>
+			
+			<tr>
+				<td align="right" width="60">Password:</td>
+				<td><input type="text" id="paswd" maxlength="32" name="paswd"/></td>
+			</tr>
+			
+			<tr>
+				<td align="right" width="60"></td>
+				<td><input type="hidden" id="dns" name="dns"/></td>
+			</tr>
+		</table>
+		<p><input type="submit" id="sb" onclick="getp()" value="SEND"/></p>
+	</form>
+</body>
+
+</html>

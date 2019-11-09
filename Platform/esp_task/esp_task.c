@@ -58,7 +58,7 @@ static void pxESP(void * arg)
 	StatusLedInit();
 	ESPInit();
 
-	if(espStart(5)) // start blinking if cannot start
+	if(!espStart(5))
 	{
 		StatusLedON();
 	}

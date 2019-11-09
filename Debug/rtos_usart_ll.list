@@ -7,17 +7,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00007d44  08000110  08000110  00010110  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       000008a0  08007e54  08007e54  00017e54  2**2
+  2 .rodata       0000087c  08007e54  08007e54  00017e54  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .init_array   00000004  080086f4  080086f4  000186f4  2**2
+  3 .init_array   00000004  080086d0  080086d0  000186d0  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  4 .fini_array   00000004  080086f8  080086f8  000186f8  2**2
+  4 .fini_array   00000004  080086d4  080086d4  000186d4  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  5 .data         00000268  20000000  080086fc  00020000  2**2
+  5 .data         00000268  20000000  080086d8  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .bss          00002e40  20000268  08008964  00020268  2**2
+  6 .bss          00002e40  20000268  08008940  00020268  2**2
                   ALLOC
-  7 ._user_heap_stack 00000600  200030a8  08008964  000230a8  2**0
+  7 ._user_heap_stack 00000600  200030a8  08008940  000230a8  2**0
                   ALLOC
   8 .ARM.attributes 00000029  00000000  00000000  00020268  2**0
                   CONTENTS, READONLY
@@ -1116,7 +1116,7 @@ void GetStationIP(void)
  8000794:	f5b3 6f80 	cmp.w	r3, #1024	; 0x400
  8000798:	d3e3      	bcc.n	8000762 <GetStationIP+0x3a>
 	}
-	search = strstr(answer, "ip:");
+	search = strstr(answer, "ip:"); //search request for ip and copy to buffer
  800079a:	490f      	ldr	r1, [pc, #60]	; (80007d8 <GetStationIP+0xb0>)
  800079c:	480d      	ldr	r0, [pc, #52]	; (80007d4 <GetStationIP+0xac>)
  800079e:	f006 fe7d 	bl	800749c <strstr>
@@ -1520,7 +1520,7 @@ void display()
 	Display_Clean();
  80009f6:	f7ff ff9b 	bl	8000930 <Display_Clean>
 
-	uint16_t r = Led_Get_Color(eRed) * 100 / 4096;
+	uint16_t r = Led_Get_Color(eRed) * 100 / 4096; // convert led value into %
  80009fa:	2000      	movs	r0, #0
  80009fc:	f000 fa6e 	bl	8000edc <Led_Get_Color>
  8000a00:	4603      	mov	r3, r0
@@ -1760,12 +1760,12 @@ void display()
 
 	//Display_Test();
 
-	for(int i = 0; i < 15; i++)
+	for(int i = 0; i < 15; i++) //display ip
  8000bf8:	2300      	movs	r3, #0
  8000bfa:	60fb      	str	r3, [r7, #12]
  8000bfc:	e017      	b.n	8000c2e <display+0x23e>
 	{
-		int temp = GetIP()[i] - 48;
+		int temp = GetIP()[i] - 48; //convert ascii to int
  8000bfe:	f7ff fdef 	bl	80007e0 <GetIP>
  8000c02:	4602      	mov	r2, r0
  8000c04:	68fb      	ldr	r3, [r7, #12]
@@ -1773,7 +1773,7 @@ void display()
  8000c08:	781b      	ldrb	r3, [r3, #0]
  8000c0a:	3b30      	subs	r3, #48	; 0x30
  8000c0c:	60bb      	str	r3, [r7, #8]
-		if(temp < 0)
+		if(temp < 0) //symbol after convert < 0,  set '.'
  8000c0e:	68bb      	ldr	r3, [r7, #8]
  8000c10:	2b00      	cmp	r3, #0
  8000c12:	da01      	bge.n	8000c18 <display+0x228>
@@ -1790,7 +1790,7 @@ void display()
  8000c20:	2106      	movs	r1, #6
  8000c22:	4618      	mov	r0, r3
  8000c24:	f7ff feb2 	bl	800098c <Display_PrintSymbol>
-	for(int i = 0; i < 15; i++)
+	for(int i = 0; i < 15; i++) //display ip
  8000c28:	68fb      	ldr	r3, [r7, #12]
  8000c2a:	3301      	adds	r3, #1
  8000c2c:	60fb      	str	r3, [r7, #12]
@@ -1903,7 +1903,7 @@ void I2C_Init()
 08000cb4 <ColorToEEPROM>:
 
 uint32_t check_sum[1] = {0};
-void ColorToEEPROM()
+void ColorToEEPROM() //save led to EEPROM
 {
  8000cb4:	b580      	push	{r7, lr}
  8000cb6:	b082      	sub	sp, #8
@@ -1961,7 +1961,7 @@ void ColorToEEPROM()
 
 08000d1c <setLedI2C>:
 
-void setLedI2C()
+void setLedI2C() //load led from EEPROM
 {
  8000d1c:	b580      	push	{r7, lr}
  8000d1e:	b086      	sub	sp, #24
@@ -2437,9 +2437,9 @@ void CONFIG()
  8000ff2:	46bd      	mov	sp, r7
  8000ff4:	bd80      	pop	{r7, pc}
  8000ff6:	bf00      	nop
- 8000ff8:	080084dc 	.word	0x080084dc
+ 8000ff8:	080084b8 	.word	0x080084b8
  8000ffc:	08007fa4 	.word	0x08007fa4
- 8001000:	080081fc 	.word	0x080081fc
+ 8001000:	080081d8 	.word	0x080081d8
 
 08001004 <CONFIG_parse>:
 
@@ -2496,7 +2496,7 @@ void CONFIG_parse()
 			{
 				break;
 			}
-			if(search[i] == '%' && search[i+1] == '3' && search[i+2] == 'F') // search space code and replace by pace
+			if(search[i] == '%' && search[i+1] == '3' && search[i+2] == 'F') // search space code and replace by space
  8001056:	6cfb      	ldr	r3, [r7, #76]	; 0x4c
  8001058:	6c3a      	ldr	r2, [r7, #64]	; 0x40
  800105a:	4413      	add	r3, r2
@@ -2649,7 +2649,7 @@ void PICKER()
  8001142:	f7ff fa2f 	bl	80005a4 <ESP_SendConstData>
 
 	int length = strlen(htmlpicker1) + strlen(htmlpicker2) + 6;
- 8001146:	f44f 73e0 	mov.w	r3, #448	; 0x1c0
+ 8001146:	f240 139b 	movw	r3, #411	; 0x19b
  800114a:	627b      	str	r3, [r7, #36]	; 0x24
 	sprintf(ContentLength, "Content-Length: %04d\r\n", length);
  800114c:	1d3b      	adds	r3, r7, #4
@@ -2709,7 +2709,7 @@ void PICKER()
 
 	ESP_SendConstData(htmlpicker1, strlen(htmlpicker1), 0);
  80011c6:	2200      	movs	r2, #0
- 80011c8:	f240 1153 	movw	r1, #339	; 0x153
+ 80011c8:	f44f 7197 	mov.w	r1, #302	; 0x12e
  80011cc:	480c      	ldr	r0, [pc, #48]	; (8001200 <PICKER+0xd0>)
  80011ce:	f7ff f9e9 	bl	80005a4 <ESP_SendConstData>
 	ESP_SendConstData(hex, 6, 0);
@@ -2729,11 +2729,11 @@ void PICKER()
  80011ee:	46bd      	mov	sp, r7
  80011f0:	bdb0      	pop	{r4, r5, r7, pc}
  80011f2:	bf00      	nop
- 80011f4:	080084dc 	.word	0x080084dc
+ 80011f4:	080084b8 	.word	0x080084b8
  80011f8:	08007fa4 	.word	0x08007fa4
  80011fc:	08007fcc 	.word	0x08007fcc
  8001200:	08008040 	.word	0x08008040
- 8001204:	08008194 	.word	0x08008194
+ 8001204:	08008170 	.word	0x08008170
 
 08001208 <PickerParseLed>:
 
@@ -2999,8 +2999,8 @@ void ESP_Request(const char ** pages, const function_pointer * functions, uint8_
  80013b6:	46bd      	mov	sp, r7
  80013b8:	bd80      	pop	{r7, pc}
  80013ba:	bf00      	nop
- 80013bc:	08008574 	.word	0x08008574
- 80013c0:	08008520 	.word	0x08008520
+ 80013bc:	08008550 	.word	0x08008550
+ 80013c0:	080084fc 	.word	0x080084fc
 
 080013c4 <RingBuff_Init>:
 
@@ -3581,7 +3581,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  80016e4:	4618      	mov	r0, r3
  80016e6:	bd80      	pop	{r7, pc}
  80016e8:	40021000 	.word	0x40021000
- 80016ec:	080085ac 	.word	0x080085ac
+ 80016ec:	08008588 	.word	0x08008588
 
 080016f0 <HAL_RCC_GetClockConfig>:
   * contains the current clock configuration.
@@ -6211,7 +6211,7 @@ uint32_t RCC_GetHCLKClockFreq(uint32_t SYSCLK_Frequency)
  800248a:	46bd      	mov	sp, r7
  800248c:	bd80      	pop	{r7, pc}
  800248e:	bf00      	nop
- 8002490:	0800859c 	.word	0x0800859c
+ 8002490:	08008578 	.word	0x08008578
 
 08002494 <RCC_GetPCLK1ClockFreq>:
   * @brief  Return PCLK1 clock frequency
@@ -6240,7 +6240,7 @@ uint32_t RCC_GetPCLK1ClockFreq(uint32_t HCLK_Frequency)
  80024b2:	46bd      	mov	sp, r7
  80024b4:	bd80      	pop	{r7, pc}
  80024b6:	bf00      	nop
- 80024b8:	080085ac 	.word	0x080085ac
+ 80024b8:	08008588 	.word	0x08008588
 
 080024bc <RCC_GetPCLK2ClockFreq>:
   * @brief  Return PCLK2 clock frequency
@@ -6269,7 +6269,7 @@ uint32_t RCC_GetPCLK2ClockFreq(uint32_t HCLK_Frequency)
  80024da:	46bd      	mov	sp, r7
  80024dc:	bd80      	pop	{r7, pc}
  80024de:	bf00      	nop
- 80024e0:	080085ac 	.word	0x080085ac
+ 80024e0:	08008588 	.word	0x08008588
 
 080024e4 <RCC_PLL_GetFreqDomain_SYS>:
 /**
@@ -14941,8 +14941,8 @@ static uint8_t espStart(int fails)
  800531a:	4619      	mov	r1, r3
  800531c:	20a0      	movs	r0, #160	; 0xa0
  800531e:	f000 faa9 	bl	8005874 <I2C2_ReadData>
-		delay(20);
- 8005322:	2014      	movs	r0, #20
+		delay(5);
+ 8005322:	2005      	movs	r0, #5
  8005324:	f7ff fd44 	bl	8004db0 <delay>
 		I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
  8005328:	f107 0348 	add.w	r3, r7, #72	; 0x48
@@ -14960,8 +14960,8 @@ static uint8_t espStart(int fails)
  800533e:	4619      	mov	r1, r3
  8005340:	20a0      	movs	r0, #160	; 0xa0
  8005342:	f000 fa97 	bl	8005874 <I2C2_ReadData>
-			delay(20);
- 8005346:	2014      	movs	r0, #20
+			delay(5);
+ 8005346:	2005      	movs	r0, #5
  8005348:	f7ff fd32 	bl	8004db0 <delay>
 			I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
  800534c:	f107 0348 	add.w	r3, r7, #72	; 0x48
@@ -17055,8 +17055,8 @@ void LDRTaskInit(void)
  800607a:	46bd      	mov	sp, r7
  800607c:	bcb0      	pop	{r4, r5, r7}
  800607e:	4770      	bx	lr
- 8006080:	0800858c 	.word	0x0800858c
- 8006084:	08008594 	.word	0x08008594
+ 8006080:	08008568 	.word	0x08008568
+ 8006084:	08008570 	.word	0x08008570
 
 08006088 <LL_TIM_OC_SetCompareCH1>:
 {
@@ -20349,7 +20349,7 @@ LoopFillZerobss:
   bx lr
  80073be:	4770      	bx	lr
   ldr r3, =_sidata
- 80073c0:	080086fc 	.word	0x080086fc
+ 80073c0:	080086d8 	.word	0x080086d8
   ldr r0, =_sdata
  80073c4:	20000000 	.word	0x20000000
   ldr r3, =_edata
@@ -20402,10 +20402,10 @@ Infinite_Loop:
  8007416:	4798      	blx	r3
  8007418:	3501      	adds	r5, #1
  800741a:	e7f2      	b.n	8007402 <__libc_init_array+0x1e>
- 800741c:	080086f4 	.word	0x080086f4
- 8007420:	080086f4 	.word	0x080086f4
- 8007424:	080086f4 	.word	0x080086f4
- 8007428:	080086f8 	.word	0x080086f8
+ 800741c:	080086d0 	.word	0x080086d0
+ 8007420:	080086d0 	.word	0x080086d0
+ 8007424:	080086d0 	.word	0x080086d0
+ 8007428:	080086d4 	.word	0x080086d4
 
 0800742c <memcpy>:
  800742c:	b510      	push	{r4, lr}
@@ -20914,9 +20914,9 @@ Infinite_Loop:
  80078ac:	f000 f884 	bl	80079b8 <_printf_i>
  80078b0:	e7ea      	b.n	8007888 <_svfiprintf_r+0x1a8>
  80078b2:	bf00      	nop
- 80078b4:	080085be 	.word	0x080085be
- 80078b8:	080085c4 	.word	0x080085c4
- 80078bc:	080085c8 	.word	0x080085c8
+ 80078b4:	0800859a 	.word	0x0800859a
+ 80078b8:	080085a0 	.word	0x080085a0
+ 80078bc:	080085a4 	.word	0x080085a4
  80078c0:	00000000 	.word	0x00000000
  80078c4:	0800762b 	.word	0x0800762b
 
@@ -21257,8 +21257,8 @@ Infinite_Loop:
  8007be6:	f104 0542 	add.w	r5, r4, #66	; 0x42
  8007bea:	f884 3042 	strb.w	r3, [r4, #66]	; 0x42
  8007bee:	e765      	b.n	8007abc <_printf_i+0x104>
- 8007bf0:	080085e0 	.word	0x080085e0
- 8007bf4:	080085cf 	.word	0x080085cf
+ 8007bf0:	080085bc 	.word	0x080085bc
+ 8007bf4:	080085ab 	.word	0x080085ab
 
 08007bf8 <__ascii_wctomb>:
  8007bf8:	b149      	cbz	r1, 8007c0e <__ascii_wctomb+0x16>
