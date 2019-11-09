@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+<includepath workspace_path="true">/Test/Test</includepath>
+<includepath workspace_path="true">/Test/cmocka</includepath>
+<includepath workspace_path="true">/Test/Test/ldr_test</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/ldr_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/encoder_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/led_driver</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/usart</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/delay</includepath>
+<includepath workspace_path="true">/Test/APL/ldr</includepath>
+<includepath workspace_path="true">/Test/APL/request</includepath>
+<includepath workspace_path="true">/Test/APL/encoder</includepath>
+<includepath workspace_path="true">/Test/APL/ESP8266</includepath>
+<includepath workspace_path="true">/Test/APL/ring_buffer</includepath>
+<includepath workspace_path="true">/Test/APL/led</includepath>
+<includepath workspace_path="true">/Test/APL/i2c_data</includepath>
+<includepath workspace_path="true">/Test/APL/display</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/crc</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/i2c</includepath>
+<includepath workspace_path="true">/Test/Test/mock_obj/spi</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>

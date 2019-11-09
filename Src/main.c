@@ -31,9 +31,9 @@ int main(void)
 {
   HAL_Init();
   SystemClock_Config();
-  MX_FREERTOS_Init(); //recalc stack size
+  MX_FREERTOS_Init();
 
-  PowerStatusInit();
+  PowerStatusInit(); // config pin for check power and set irq handler
 
   osKernelStart();
 

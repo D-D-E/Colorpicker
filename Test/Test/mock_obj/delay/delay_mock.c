@@ -6,7 +6,7 @@ void delay(uint16_t value)
 }
 
 uint32_t sys_tick = 0;
-uint32_t get_sys_tick(void)
+uint32_t getSysTick(void)
 {
     sys_tick++;
 	return sys_tick;

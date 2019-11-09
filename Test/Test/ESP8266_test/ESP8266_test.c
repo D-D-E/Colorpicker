@@ -88,7 +88,7 @@ static void test_esp_send_data(void **state)
     SetReceiveData(">", 1);
     char test[] = "send test data";
     char answer[] = "AT+CIPSEND=0,14\r\nsend test data";
-    ESP_SendData(test, strlen(test), 0);
+    ESP_SendConstData(test, strlen(test), 0);
     for(int i = 0; i < 14; i++)
     {
         assert_int_equal(GetSendData()[i], answer[i]);

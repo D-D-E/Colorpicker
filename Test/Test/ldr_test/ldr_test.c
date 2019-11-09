@@ -9,7 +9,7 @@ static void test_ldr_get_const(void **state)
 {
     LDRInit();
     SetADC1(100);
-    assert_int_equal(LDR_Get(), 3995);
+    assert_int_equal(LDR_Get(), 3996);
 }
 
 static void test_ldr_get_rand_small(void **state)

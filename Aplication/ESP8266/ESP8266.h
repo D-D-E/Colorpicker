@@ -33,4 +33,7 @@ char * GetSSID();
 void SetPASWD(char * passwd);
 char *  GetPasw();
 
+void GetStationIP(void);
+char * GetIP(void);
+
 #endif

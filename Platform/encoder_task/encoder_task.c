@@ -24,12 +24,12 @@ static void pxEncoder(void * arg)
 			}
 			case eLeft:
 			{
-				EncoderQueue_Send(-1000, encoder_button_step);
+				EncoderQueue_Send(-100, encoder_button_step);
 				break;
 			}
 			case eRight:
 			{
-				EncoderQueue_Send(1000, encoder_button_step);
+				EncoderQueue_Send(100, encoder_button_step);
 				break;
 			}
 			default: break;

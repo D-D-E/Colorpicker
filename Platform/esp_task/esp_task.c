@@ -13,7 +13,7 @@ static uint8_t gMissConnection = 0;
 
 static uint8_t espStart(int fails)
 {
-	if(GPIO_Read_Pin(1) == 0)
+	if(GPIO_Read_Pin(1) == 0) //if encoder button pushed turn softAP
 	{
 		while(ESP_SetModeSoftAP()==0 || ESP_SetParamsSoftAP("ESP", "12345678")==0 || ESP_StartTCPServer(80)==0)
 		{
@@ -26,17 +26,18 @@ static uint8_t espStart(int fails)
 		}
 
 	}
-	else
+	else //else read ssid and passwd from EEPROM and connect to wifi
 	{
 		char ssid[64], paswd[64];
+
 		I2C2_ReadData(0xA0, (uint8_t *)ssid, 32);
-		delay(20);
+		delay(5);
 		I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
 
 		while(strlen(ssid)==0 || ESP_SetModeStation()==0 || ESP_SetParamsStation(ssid, paswd)==0 || ESP_StartTCPServer(80)==0)
 		{
 			I2C2_ReadData(0xA0, (uint8_t *)ssid, 32);
-			delay(20);
+			delay(5);
 			I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
 
 			gMissConnection++;
@@ -57,28 +58,29 @@ static void pxESP(void * arg)
 	StatusLedInit();
 	ESPInit();
 
-	if(espStart(5))
+	if(espStart(5)) // start blinking if cannot start
 	{
 		StatusLedON();
 	}
-	else ErrorBlink();
 
 	while(1)
 	{
-		if(strlen(GetSSID()) > 1 && config_flag == 0)
+		if(strlen(GetSSID()) > 1 && config_flag == 0) // check if change wifi settings
 		{
-			ESP_StopTCPServer(80); //dummy for reset tcp flag
+			ESP_StopTCPServer(80); //dummy for reset tcp server flag
 			config_flag = 1;
 
 			if(ESP_SetModeBoth()==0 || ESP_SetParamsStation(GetSSID(), GetPasw())==0 || ESP_StartTCPServer(80)==0)
 			{
 				config_flag = 0;
 			}
-			I2C2_SendData(0xA0, (uint8_t *)GetSSID(), 32);
+			//APModeBlink();
+			I2C2_SendData(0xA0, (uint8_t *)GetSSID(), 32); //save new wifi settings
 			delay(5);
 			I2C2_SendData(0xD0, (uint8_t *)GetPasw(), 32);
 		}
-		ESP_Request(PAGES, FUNCTIONS, 4);
+
+		ESP_Request(PAGES, FUNCTIONS, 4); // process requests
 		osDelay(10);
 	}
 }

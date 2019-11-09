@@ -59,3 +59,8 @@ void Led_Refresh(uint16_t max_value)
     TIM4_SET_CH2(map(led[1], max_value));
     TIM4_SET_CH3(map(led[2], max_value));
 }
+
+uint16_t * Led_Get_Arr_Color(void)
+{
+    return led;
+}

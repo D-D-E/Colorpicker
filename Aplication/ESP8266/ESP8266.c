@@ -5,15 +5,13 @@
 #include "stdlib.h"
 #include "stdbool.h"
 #include "delay.h"
-#include "cmsis_os.h"
 #include "uart.h"
-#include "i2c.h"
 
 char request[1025];
 char answer[1025];
 
 char ssid[32], paswd[32];
-char dns[15];
+char ip[15];
 
 uint8_t linkID;
 uint8_t TCPServerFlag = 0;
@@ -31,7 +29,7 @@ static bool waitCallBack(char * aim, uint16_t ms)
 		}
 		else asm("NOP");
 
-		osDelay(1);
+		delay(1);
 	}
 	return 0;
 }
@@ -157,7 +155,7 @@ uint8_t ESP_SetParamsStation(char * ssid, char * password)
 	return 0;
 }
 
-uint8_t ESP_SetParamsDNS(char * name)
+uint8_t ESP_SetParamsDNS(char * name) //dont use
 {
 	if(name != NULL)
 	{
@@ -228,7 +226,7 @@ uint8_t requestRefresh()
 	while(!(RingBuff_IsEmpty()) && i < 1024)
 	{
 		answer[i++] = RingBuff_Pop();
-		osDelay(1);
+		delay(1);
 	}
 
 	char * search;
@@ -272,7 +270,7 @@ uint16_t charCallBack(char * key)
 	return 0;
 }
 
-uint8_t charCallBackNoFlush(char * key, uint16_t bias)
+uint8_t charCallBackNoFlush(char * key, uint16_t bias) //search data in last request
 {
 	char * temp = (char *)answer + bias;
 	if(key != NULL && strlen(temp) >= strlen(key))
@@ -306,8 +304,7 @@ uint8_t ESP_SendConstData(const char *data, uint16_t dataLength, uint8_t flagRN)
 	}
 	else return 0;
 	delay(100);
-
-//	if(waitCallBack("SEND OK", 200))
+//	if(waitCallBack("Recv", 200))
 //	{
 //		return 1;
 //	}
@@ -348,4 +345,35 @@ void SetPASWD(char * passwd)
 char *  GetPasw()
 {
 	return paswd;
+}
+
+void GetStationIP(void)
+{
+	char * search;
+	requestFlush();
+	sprintf(request, "AT+CIPSTA_CUR?\r\n");
+	RingBuff_Clear();
+	USART_SendData(request, strlen(request));
+
+	uint16_t i = 0;
+	while(!(RingBuff_IsEmpty()) && i < 1024)
+	{
+		answer[i] = RingBuff_Pop();
+		if(answer[i] == 0)
+		{
+			answer[i] = '0';
+		}
+		i++;
+	}
+	search = strstr(answer, "ip:"); //search request for ip and copy to buffer
+	if(search != NULL)
+	{
+		memcpy(ip, search + 4, 15);
+	}
+	//else memcpy(ip, "000.000.000.000", 15);
+}
+
+char * GetIP(void)
+{
+	return ip;
 }

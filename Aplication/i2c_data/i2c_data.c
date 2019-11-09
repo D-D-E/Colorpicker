@@ -11,7 +11,7 @@ void I2C_Init()
 }
 
 uint32_t check_sum[1] = {0};
-void ColorToEEPROM()
+void ColorToEEPROM() //save led to EEPROM
 {
 	uint16_t led[4] = {0,0,0,0};
 	led[0] = Led_Get_Arr_Color()[0];
@@ -24,7 +24,7 @@ void ColorToEEPROM()
 	I2C2_SendData(0x2A, (uint8_t *)check_sum, 4);
 }
 
-void setLedI2C()
+void setLedI2C() //load led from EEPROM
 {
 	uint16_t i2c_led[4] = {0, 0, 0, 0};
 	uint32_t check_sum[2] = {0};
