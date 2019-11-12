@@ -21,6 +21,7 @@ APL/ldr \
 APL/request \
 APL/ring_buffer \
 Test/ESP8266_test \
+Test/i2c_data_test \
 Test/mock_obj/crc \
 Test/mock_obj/delay \
 Test/mock_obj/encoder_driver \

@@ -13,7 +13,7 @@ void EncoderQueueInit(void);
 
 void EncoderQueue_Send(uint16_t value, uint8_t button);
 
-EncoderRotateInfo EncoderQueue_Receive(void);
+void EncoderQueue_Receive(EncoderRotateInfo * value);
 bool EncoderQueue_IsElements(void);
 
 #endif /* ENCODER_QUEUE_ENCODER_QUEUE_H_ */

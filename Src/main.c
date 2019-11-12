@@ -33,7 +33,7 @@ int main(void)
   SystemClock_Config();
   MX_FREERTOS_Init();
 
-  PowerStatusInit(); // config pin for check power and set irq handler
+  PowerDropInterruptInit(); // config irq for checking dropped power
 
   osKernelStart();
 

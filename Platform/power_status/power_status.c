@@ -2,12 +2,10 @@
 #include "status_led.h"
 #include "main.h"
 #include "delay.h"
-#include "led.h"
 #include "i2c_data.h"
-#include "crc.h"
 #include "cmsis_os.h"
 
-void PowerStatusInit(void)
+void PowerDropInterruptInit(void)
 {
 	LL_EXTI_InitTypeDef EXTI_InitStruct = {0};
 

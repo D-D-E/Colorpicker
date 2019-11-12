@@ -17,12 +17,11 @@ void EncoderQueue_Send(uint16_t value, uint8_t button)
 	xQueueSendToBack(encoder_queue, &xEncoder_info, xTicksToWait);
 }
 
-EncoderRotateInfo EncoderQueue_Receive(void)
+void EncoderQueue_Receive(EncoderRotateInfo * value)
 {
-	EncoderRotateInfo value;
-	xQueueReceive(encoder_queue, &value, 0);
-	return value;
+	xQueueReceive(encoder_queue, &value, 100);
 }
+
 bool EncoderQueue_IsElements(void)
 {
 	if(uxQueueMessagesWaiting(encoder_queue) > 0)

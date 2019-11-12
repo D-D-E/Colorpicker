@@ -18,6 +18,7 @@ RM := rm -rf
 -include Test/mock_obj/encoder_driver/subdir.mk
 -include Test/mock_obj/delay/subdir.mk
 -include Test/mock_obj/crc/subdir.mk
+-include Test/i2c_data_test/subdir.mk
 -include Test/ESP8266_test/subdir.mk
 -include APL/ring_buffer/subdir.mk
 -include APL/request/subdir.mk

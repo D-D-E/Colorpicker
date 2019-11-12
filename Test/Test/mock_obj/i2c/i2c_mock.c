@@ -1,23 +1,28 @@
 #include "i2c.h"
 #include "delay.h"
+#include "string.h"
 
-#define I2C_REQUEST_WRITE                       0x00
-#define I2C_REQUEST_READ                        0x01
-#define SLAVE_OWN_ADDRESS                       0xA0
-#define TIMEOUT									100
+uint8_t data_buff[4096];
 
 void MX_I2C2_Init(void)
 {
-
+    memset(data_buff, 0, 4096);
 }
 
 bool I2C2_SendData(uint16_t addr, uint8_t * data, uint32_t data_length)
 {
+    for(int i = 0; i < data_length; i++)
+    {
+        data_buff[addr + i] = data[i];
+    }
     return 1;
 }
 
 bool I2C2_ReadData(uint16_t addr, uint8_t * data, uint32_t data_length)
 {
-
+    for(int i = 0; i < data_length; i++)
+    {
+        data[i] = data_buff[addr + i];
+    }
 	return 1;
 }

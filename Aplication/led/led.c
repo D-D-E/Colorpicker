@@ -24,26 +24,15 @@ void Led_Set(uint16_t red, uint16_t green, uint16_t blue)
 
 void Led_Set_Color(color color, uint16_t value)
 {
-	switch(color)
+	if(color >= 0 && color < 3)
 	{
-		case eRed: led[0] = OverflowProtection(value); break;
-		case eGreen: led[1] = OverflowProtection(value); break;
-		case eBlue: led[2] = OverflowProtection(value); break;
-		default: break;
+		led[color] = OverflowProtection(value);
 	}
-
 }
 
 uint16_t Led_Get_Color(color color)
 {
-	switch(color)
-	{
-		case eRed: return led[0]; break;
-		case eGreen: return led[1]; break;
-		case eBlue: return led[2]; break;
-		default: break;
-	}
-	return 0;
+	return led[color];
 }
 
 uint16_t * Led_Get_Arr_Color()

@@ -1,5 +1,5 @@
 #include "esp_task.h"
-#include "i2c.h"
+#include "i2c_data.h"
 #include "encoder_driver.h"
 #include "ESP8266.h"
 #include "delay.h"
@@ -28,17 +28,13 @@ static uint8_t espStart(int fails)
 	}
 	else //else read ssid and passwd from EEPROM and connect to wifi
 	{
-		char ssid[64], paswd[64];
+		char ssid[32], paswd[32];
 
-		I2C2_ReadData(0xA0, (uint8_t *)ssid, 32);
-		delay(5);
-		I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
+		WifiFromEEPROM((uint8_t *)ssid, (uint8_t *)paswd);
 
 		while(strlen(ssid)==0 || ESP_SetModeStation()==0 || ESP_SetParamsStation(ssid, paswd)==0 || ESP_StartTCPServer(80)==0)
 		{
-			I2C2_ReadData(0xA0, (uint8_t *)ssid, 32);
-			delay(5);
-			I2C2_ReadData(0xD0, (uint8_t *)paswd, 32);
+			WifiFromEEPROM((uint8_t *)ssid, (uint8_t *)paswd);
 
 			gMissConnection++;
 			ESP_Resset();
@@ -75,9 +71,7 @@ static void pxESP(void * arg)
 				config_flag = 0;
 			}
 			//APModeBlink();
-			I2C2_SendData(0xA0, (uint8_t *)GetSSID(), 32); //save new wifi settings
-			delay(5);
-			I2C2_SendData(0xD0, (uint8_t *)GetPasw(), 32);
+			WifiToEEPROM();
 		}
 
 		ESP_Request(PAGES, FUNCTIONS, 4); // process requests

@@ -19,21 +19,21 @@ static uint16_t constrain(int32_t value)
 static void pxLed(void * arg)
 {
 	LedInit();
+	I2C_Init();
+	ColorFromEEPROM(); // load led from EEPROM
 
+	Display_Init();
 	Display_ON();
-	Display_Contrast(0xFF);
-	display(); // refrash display
+	display(); // refresh display
 
 	uint16_t ldr_value = 4096, ldr_value_old = 4096;
 	EncoderRotateInfo xEncoder_info;
-
-	setLedI2C(); // load led from EEPROM
 
 	while(1)
 	{
 		if(EncoderQueue_IsElements()) // get data from encoder
 		{
-			xEncoder_info = EncoderQueue_Receive();
+			EncoderQueue_Receive(&xEncoder_info);
 			int16_t red = Led_Get_Color(eRed), green = Led_Get_Color(eGreen), blue = Led_Get_Color(eBlue);
 
 			switch(xEncoder_info.button) // refresh led and display
@@ -81,10 +81,9 @@ static void pxLed(void * arg)
 
 			osDelay(1);
 		}
-		ldr_value_old = ldr_value;
 
 		static uint16_t update_display = 1000;
-		if(update_display == 0)
+		if(update_display == 0) // delay to refresh display
 		{
 			GetStationIP();
 			update_display = 1000;
@@ -99,5 +98,4 @@ static void pxLed(void * arg)
 void LedTaskInit(void)
 {
 	xTaskCreate(pxLed, "Led", configMINIMAL_STACK_SIZE, NULL, osPriorityNormal, NULL);
-	I2C_Init();
 }
